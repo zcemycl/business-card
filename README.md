@@ -11,13 +11,19 @@ This repo is to improve [zcemycl/practice-app](https://github.com/zcemycl/practi
 
 ## Coding Standards
 - Frontend
+    - React + Typescript
+    - Javascript + Typescript
     - Jest
     - Cypress for e2e testing
     - Prettier - Code formatter
+    - Testid?
+    - Redux + Reducer
+    - React-GA (User Activity Tracker?)
+    - Test Dev Stage Prod
 - Backend
     - Python 
         - Pytest
-        - Packaging
+        - Packaging pylint isort black flake8
     - Nodejs
     - C++
     - C#
