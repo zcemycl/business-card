@@ -13,6 +13,7 @@ This repo is to improve [zcemycl/practice-app](https://github.com/zcemycl/practi
 - Frontend
     - React + Typescript
     - Javascript + Typescript
+        - More customised designs
     - Jest
     - Cypress for e2e testing
     - Prettier - Code formatter
@@ -20,10 +21,17 @@ This repo is to improve [zcemycl/practice-app](https://github.com/zcemycl/practi
     - Redux + Reducer
     - React-GA (User Activity Tracker?)
     - Test Dev Stage Prod
+    - env-cmd?
+    - Tour
+    - Webpack
 - Backend
     - Python 
         - Pytest
-        - Packaging pylint isort black flake8
+        - Packaging 
+        - pylint 
+        - isort 
+        - black 
+        - flake8
     - Nodejs
     - C++
     - C#
