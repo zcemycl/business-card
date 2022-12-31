@@ -25,6 +25,7 @@ This repo is to improve [zcemycl/practice-app](https://github.com/zcemycl/practi
     - Tour
     - Webpack
     - Bootstrap + MUI + Styled Components
+    - Dynamic Page Recommendation?
 - Backend
     - Python 
         - Pytest
@@ -38,7 +39,20 @@ This repo is to improve [zcemycl/practice-app](https://github.com/zcemycl/practi
     - C#
 - Infrastructure
     - Terraform 
-    - AWS
+        - AWS
+        - Modules
+        - Dev + Prod Folder to link modules
+        - 
+- Database 
+    - SQLite
+        - Prototyping
+    - MariaDB
+        - User Pool
+        - Page Rank
+    - PostgreSQL
+    - Neo4J
+        - Fun
+    - PySpark for recommendation system
 
 ## Architectures
 
