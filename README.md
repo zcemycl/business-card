@@ -40,9 +40,11 @@ This repo is to improve [zcemycl/practice-app](https://github.com/zcemycl/practi
 - Infrastructure
     - Terraform 
         - AWS
+            - amplify
+            - rds, dynamodb
+            - eks? ecr, ecs
         - Modules
         - Dev + Prod Folder to link modules
-        - 
 - Database 
     - SQLite
         - Prototyping
