@@ -34,7 +34,7 @@ a{
     color: white;
 }
 
-ul{
+.menu > ul{
     list-style-type: none;
     color: white;
     display: flex;
@@ -89,20 +89,142 @@ li {
 
 .wrapper {
     min-height: 80vh;
+    padding: 2rem 4rem;
     /* border: 5px solid black; */
     /* border-radius: 0 0 var(--border-radius-contant) var(--border-radius-contant); */
 }
 
-.content > section:nth-child(odd) > div {
+.content > section:nth-child(odd) {
     background-color: rgb(15, 70, 83);
 }
 
-.content > section:nth-child(even) > div {
+.content > section:nth-child(odd) > div {
+    background-color: transparent;
+}
+
+.content > section:nth-child(even) {
     background-color: rgb(42, 60, 136);
+    /* overflow: hidden; */
+}
+
+.content > section:nth-child(even) > div {
+    background-color: transparent;
 }
 
 .active {
     background-color: rgb(156, 12, 158);
     padding: .5em 1em;
     border-radius: 1em .25em .1em;
+}
+
+div.footer {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-content: space-between;
+    column-gap: 1rem;
+}
+
+.intro > div{
+    display: inline;
+    color: white;
+    line-height: 4rem;
+}
+
+.intro > div > ul {
+    list-style-type: none;
+    line-height: 1rem;
+    
+}
+
+.intro > div > ul > li {
+    padding-left: 0;
+}
+
+.right-image {
+    width: 200%;
+    min-height: 80vh;
+    min-height: 80dvh;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    display: grid;
+    /* overflow: hidden; */
+    /* transform: translateY(-80vh); */
+    z-index: 2;
+}
+
+.intro {
+    border: 5px solid black;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    color: transparent;
+    z-index: 1;
+}
+
+#intro {
+    background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/src/tf/sqs-lambda-step/resources/architecture.png");
+    /* background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png"); */
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: right;
+    border: 5px solid black;
+    width: 100%;
+    min-height: 80vh;
+    min-height: 80dvh;
+    /* color: transparent; */
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+#educations {
+    background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: right;
+    border: 5px solid black;
+    width: 100%;
+    min-height: 80vh;
+    min-height: 80dvh;
+    color: transparent;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    /* overflow:auto; */
+}
+
+#experiences {
+    background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/cloudmap-chroma.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: right;
+    border: 5px solid black;
+    width: 100%;
+    min-height: 80vh;
+    min-height: 80dvh;
+    color: transparent;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+#moocs {
+    background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/src/tf/sqs-lambda-step/resources/architecture.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: right;
+    border: 5px solid black;
+    width: 100%;
+    min-height: 80vh;
+    min-height: 80dvh;
+    color: transparent;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+#about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column: 1 / 3;
+    color: transparent;
+    grid-row: 1 / 2;
 }
