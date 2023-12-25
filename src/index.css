@@ -1,0 +1,108 @@
+:root {
+    --gradient: linear-gradient(
+        45deg, 
+        rgb(220, 55, 55), 
+        yellow,
+        rgb(190, 46, 190)
+    );
+    --border-radius-contant: .7em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: basic-sans, sans-serif;
+    font-size: 1.125em;
+    text-decoration: none;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: #ddd;
+    background-image: var(--gradient);
+    background-size: 400%;
+    animation: bg-animate 20s infinite alternate;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+ul{
+    list-style-type: none;
+    color: white;
+    display: flex;
+}
+
+li {
+    padding: 0.1rem 1rem;
+}
+
+@keyframes bg-animate {
+    0% {background-position: left}
+    100% {background-position: right;}
+}
+
+.cv {
+    width: 80%;
+    min-height: 95vh;
+    min-height: 95dvh;
+    border-radius: 1em;
+    background-color: #171E37;
+    /* transform: translateY(2%); */
+    overflow: hidden;
+    /* box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.menu {
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    border: 1px black solid;
+    border-radius: var(--border-radius-contant) 0 0;
+    background-color: #171E37;
+    padding: 2vh 10% 0;
+    min-height: 6.5vh;
+}
+
+.content, 
+.scroll-area {
+    height: 80vh;
+}
+
+.content {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+.scroll-area {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.wrapper {
+    min-height: 80vh;
+    /* border: 5px solid black; */
+    /* border-radius: 0 0 var(--border-radius-contant) var(--border-radius-contant); */
+}
+
+.content > section:nth-child(odd) > div {
+    background-color: rgb(15, 70, 83);
+}
+
+.content > section:nth-child(even) > div {
+    background-color: rgb(42, 60, 136);
+}
+
+.active {
+    background-color: rgb(156, 12, 158);
+    padding: .5em 1em;
+    border-radius: 1em .25em .1em;
+}
