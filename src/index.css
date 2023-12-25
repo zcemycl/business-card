@@ -100,7 +100,9 @@ li {
 
 .wrapper {
     min-height: 80vh;
-    padding: 2rem 4rem;
+    /* padding: 2rem 4rem; */
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
 }
 
 .content > section:nth-child(odd) {
@@ -143,13 +145,25 @@ div.footer {
     /* justify-content: center; */
 }
 
+.intro {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    color: transparent;
+    z-index: 1;
+    position: relative;
+    line-height: 4rem;
+    padding: 2rem 4rem;
+    min-height: 80vh;
+    width: 100%;
+}
+
 .intro > div{
+    width: 50ch;
+    position: absolute;
+    /* top: 45%; */
+    bottom: 15%;
     display: inline;
     color: white;
-    line-height: 4rem;
-    position: absolute;
-    top: 45%;
-    width: 50ch;
 }
 
 .intro > div > h1{
@@ -209,14 +223,6 @@ a.neon {
     display: grid;
     /* transform: translateY(-80vh); */
     /* transform: translate3d(-50%, -80vh, 0); */
-}
-
-.intro {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    color: transparent;
-    z-index: 1;
-    position: relative;
 }
 
 #intro {
