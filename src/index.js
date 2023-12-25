@@ -9,7 +9,6 @@ const removeActiveClass = () => {
 const addActiveClass = (entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            console.log(entry.target);
             let cur = document.querySelector(`.menu ul li a[href='#${entry.target.id}']`);
             removeActiveClass();
             cur.classList.add('active');
@@ -18,8 +17,6 @@ const addActiveClass = (entries, observer) => {
 };
 
 const options = {
-    // root: document.querySelector(".scroll-area"),
-    // rootMargin: "0px",
     threshold: 0.8
 };
 

@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <script src="index.js" defer></script>
+    <script src="slide-indicator.js" defer></script>
 </head>
 <body>
     <div class="cv">
         <div class="menu">
+            <h2></h2>
             <ul>
                 <li><a href="#about" class="active">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -24,7 +26,12 @@
             <section class="scroll-area" id="about">
                 <div class="wrapper intro">
                     <div class="left-description">
-                        <h1>Leo Leung</h1>
+                        <h1>Hello, Leo Here</h1>
+                        <h5>
+                            a Machine Learning Engineer focused on building interactive AI solution. I help businesses to customize AI models and deploy them into full stack applications. 
+                        </h5>
+                        
+                        <!-- <h1>Leo Leung</h1>
                         <h3>Educations</h3>
                         <ul>
                             <li><p>MPhil Machine Learning and Machine Intelligence</p></li>
@@ -41,16 +48,35 @@
                         <ul>
                             <li><p>Algorithm Specialisation</p></li>
                             <li><p>Robotics Specialisation</p></li>
-                        </ul>
+                        </ul> -->
+
                     </div>
                     
                 </div>
-                <div class="right-image">
-                    <div id="intro"></div>
-                    <div id="educations"></div>
-                    <div id="experiences"></div>
-                    <div id="moocs"></div>
+                <div class="pics">
+                    <div class="right-image">
+                        <div id="intro">
+                            <div id="profile"></div>
+                        </div>
+                        <div id="educations"></div>
+                        <div id="experiences"></div>
+                        <div id="moocs"></div>
+                    </div>
                 </div>
+                <div class="slide-indicator">
+                    
+                    <div class="slide-dots">
+                        <a class="slide-indicator-active" data-section="intro"
+                            onclick="slide_dot_click(event)"></a>
+                        <a data-section="educations"
+                            onclick="slide_dot_click(event)"></a>
+                        <a data-section="experiences"
+                            onclick="slide_dot_click(event)"></a>
+                        <a data-section="moocs"
+                            onclick="slide_dot_click(event)"></a>
+                    </div>
+                </div>
+                
             </section>
             <section class="scroll-area" id="skills">
                 <div class="wrapper">Placeholder</div>
@@ -60,8 +86,9 @@
             </section>
         </div>
         <div class="footer">
-            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="../resources/CV_simplify.pdf" class="neon" download>Download CV</a>
+            <a href="https://github.com/zcemycl" target="_blank"><i class="fab fa-github fa-lg icon"></i></a>
+            <a href="https://linkedin.com/in/leo-leung-48524b134" target="_blank"><i class="fab fa-linkedin fa-lg icon"></i></a>
         </div>
     </div>
 </body> 

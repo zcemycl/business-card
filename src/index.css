@@ -1,10 +1,17 @@
 :root {
-    --gradient: linear-gradient(
+    /* --gradient: linear-gradient(
         45deg, 
         rgb(220, 55, 55), 
         yellow,
         rgb(190, 46, 190)
+    ); */
+    --gradient: linear-gradient(
+        45deg, 
+        rgb(31, 12, 12), 
+        rgb(16, 12, 75),
+        rgb(38, 63, 63)
     );
+    --clr-neon: hsl(175, 64%, 33%);
     --border-radius-contant: .7em;
 }
 
@@ -67,8 +74,12 @@ li {
     border: 1px black solid;
     border-radius: var(--border-radius-contant) 0 0;
     background-color: #171E37;
-    padding: 2vh 10% 0;
+    padding: 2vh 5% 0;
     min-height: 6.5vh;
+}
+
+.menu > h2 {
+    color: white;
 }
 
 .content, 
@@ -90,12 +101,18 @@ li {
 .wrapper {
     min-height: 80vh;
     padding: 2rem 4rem;
-    /* border: 5px solid black; */
-    /* border-radius: 0 0 var(--border-radius-contant) var(--border-radius-contant); */
 }
 
 .content > section:nth-child(odd) {
-    background-color: rgb(15, 70, 83);
+    background-color: rgb(42, 60, 136);
+    background-image: linear-gradient(
+        160deg,
+        #0C1D54,
+        #122764
+    );
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
 }
 
 .content > section:nth-child(odd) > div {
@@ -103,8 +120,7 @@ li {
 }
 
 .content > section:nth-child(even) {
-    background-color: rgb(42, 60, 136);
-    /* overflow: hidden; */
+    background-color: rgb(15, 70, 83);
 }
 
 .content > section:nth-child(even) > div {
@@ -123,67 +139,129 @@ div.footer {
     justify-content: flex-end;
     align-content: space-between;
     column-gap: 1rem;
+    vertical-align: center;
+    /* justify-content: center; */
 }
 
 .intro > div{
     display: inline;
     color: white;
     line-height: 4rem;
+    position: absolute;
+    top: 45%;
+    width: 50ch;
+}
+
+.intro > div > h1{
+    font-size: 4.5rem;
+    line-height: 5rem;
+}
+
+.intro > div > h4, h3, h5, h6{
+    line-height: 1.5rem;
 }
 
 .intro > div > ul {
     list-style-type: none;
     line-height: 1rem;
-    
 }
 
 .intro > div > ul > li {
     padding-left: 0;
 }
 
-.right-image {
-    width: 200%;
+a.neon {
+    cursor: pointer;
+    color: hsl(323 21% 16%);
+    background-color: var(--clr-neon);
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+    border: var(--clr-neon) 0.125em solid;
+    display: inline-block;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+}
+
+.pics {
+    width: 100%;
     min-height: 80vh;
     min-height: 80dvh;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    display: block;
+    overflow: hidden;
+}
+
+.icon {
+    display:inline-block;
+    text-align: center;
+    align-items: center;
+    object-fit: cover;
+    transform: translateY(25%);
+}
+
+.right-image {
+    width: 200%;
     grid-column: 1 / 3;
     grid-row: 1 / 2;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     display: grid;
-    /* overflow: hidden; */
     /* transform: translateY(-80vh); */
-    z-index: 2;
+    /* transform: translate3d(-50%, -80vh, 0); */
 }
 
 .intro {
-    border: 5px solid black;
     grid-column: 1 / 3;
     grid-row: 1 / 2;
     color: transparent;
     z-index: 1;
+    position: relative;
 }
 
 #intro {
-    background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/src/tf/sqs-lambda-step/resources/architecture.png");
-    /* background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png"); */
-    background-size: 50%;
+    /* background-image: url("https://github.com/zcemycl/TF2DeepFloorplan/blob/main/resources/raycast.gif?raw=true"); */
+    background-image: linear-gradient(
+        160deg,
+        #0C1D54,
+        #122764
+    );
+    background-size: 100%;
     background-repeat: no-repeat;
-    background-position: right;
-    border: 5px solid black;
+    background-position: left top;
     width: 100%;
     min-height: 80vh;
     min-height: 80dvh;
     /* color: transparent; */
     grid-column: 1 / 2;
     grid-row: 1 / 2;
+    position:relative;
 }
+
+#profile {
+    background-image: url("../resources/profile.jpeg");
+    background-size: 100%;
+    position: absolute;
+    /* width: 40%; */
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-color: transparent;
+    /* min-height: 80vh; */
+    /* min-height: 80dvh; */
+    height: 50vh;
+    width: 50vh;
+    border-radius: 100%;
+    border: 1px solid #171E37;
+    right: 5%;
+    top: 8%;
+}
+
 
 #educations {
     background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png");
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: right;
-    border: 5px solid black;
     width: 100%;
     min-height: 80vh;
     min-height: 80dvh;
@@ -191,6 +269,7 @@ div.footer {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     /* overflow:auto; */
+    /* animation: a-animate 5s; */
 }
 
 #experiences {
@@ -198,7 +277,6 @@ div.footer {
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: right;
-    border: 5px solid black;
     width: 100%;
     min-height: 80vh;
     min-height: 80dvh;
@@ -212,7 +290,6 @@ div.footer {
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: right;
-    border: 5px solid black;
     width: 100%;
     min-height: 80vh;
     min-height: 80dvh;
@@ -227,4 +304,56 @@ div.footer {
     grid-column: 1 / 3;
     color: transparent;
     grid-row: 1 / 2;
+}
+
+.slide-indicator {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    position: relative;
+    z-index: 2;
+    /* padding-left: 4rem;
+    top: 100px; */
+    
+}
+
+a.neon {
+    /* position: absolute; */
+    top: 88%;
+    left: 5rem;
+    color: white;
+}
+
+.slide-dots {
+    position: absolute;
+    /* transform: translate3d(10rem, 70vh, 0); */
+    /* transform: ; */
+    /* min-height: 80vh; */
+    top: 88%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* margin-top: 100px; */
+}
+
+.slide-dots > a {
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.slide-dots > a::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: gold;
+    border: 1px solid black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slide-dots > a.slide-indicator-active::after {
+    background-color: rgb(222, 62, 62);
+    border: 1px solid white;
 }
