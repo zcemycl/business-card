@@ -1,9 +1,5 @@
 
 const slide_dest = {
-    // intro : "translate3d(0, 0, 0)",
-    // educations: "translate3d(0, -80vh, 0)",
-    // experiences: "translate3d(-50%, -80vh, 0)",
-    // moocs: "translate3d(-50%, 0, 0)",
     intro: [0,0],
     educations: [0,-80],
     experiences: [-50,-80],

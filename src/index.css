@@ -11,6 +11,7 @@
         rgb(16, 12, 75),
         rgb(38, 63, 63)
     );
+    --motion-grid: cubic-bezier(.1,.7,.93,.55);
     --clr-neon: hsl(175, 64%, 33%);
     --border-radius-contant: .7em;
 }
@@ -180,6 +181,7 @@ a.neon {
     /* transform: translate3d(-50%, 0, 0); */
     color: white;
     max-height: 80vh;
+    animation-timing-function: var(--motion-grid);
 }
 
 .left-description > div {
@@ -283,7 +285,7 @@ a.neon {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(7, 1fr);
     column-gap: 2rem;
-    padding: 1rem 2rem 0 2rem;
+    padding: 0rem 2rem 0 2rem;
 }
 
 .moocs > .moocs-title {
@@ -334,6 +336,7 @@ a.neon {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     display: grid;
+    animation-timing-function: var(--motion-grid);
     /* transform: translateY(-80vh); */
     /* transform: translate3d(-50%, -80vh, 0); */
 }
