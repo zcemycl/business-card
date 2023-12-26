@@ -41,12 +41,6 @@ a{
     color: white;
 }
 
-.menu > ul{
-    list-style-type: none;
-    color: white;
-    display: flex;
-}
-
 li {
     padding: 0.1rem 1rem;
 }
@@ -76,7 +70,13 @@ li {
     border-radius: var(--border-radius-contant) 0 0;
     background-color: #171E37;
     padding: 2vh 5% 0;
-    min-height: 6.5vh;
+    height: 6.5vh;
+}
+
+.menu > ul{
+    list-style-type: none;
+    color: white;
+    display: flex;
 }
 
 .menu > h2 {
@@ -161,6 +161,7 @@ a.neon {
     width: 100%;
     min-height: 80vh;
     min-height: 80dvh;
+    max-height: 80vh;
     grid-column: 1 / 3;
     grid-row: 1 / 2;
     display: block;
@@ -178,6 +179,7 @@ a.neon {
     transform: translate3d(-50%, -80vh, 0);
     /* transform: translate3d(-50%, 0, 0); */
     color: white;
+    max-height: 80vh;
 }
 
 .left-description > div {
@@ -277,6 +279,32 @@ a.neon {
 .moocs {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    column-gap: 2rem;
+    padding: 1rem 2rem 0 2rem;
+}
+
+.moocs > .moocs-title {
+    padding: 2rem 0 0 1.5rem;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    font-size: 2.5rem;
+}
+
+.moocs > .moocs-list {
+    grid-row: 2 / 7;
+    overflow: scroll;
+    line-height: 1rem;
+}
+
+.moocs > .moocs-list > h3 {
+    line-height: 3rem;
+}
+
+.moocs > .moocs-list > h4 {
+    line-height: 1.6rem;
 }
 
 /* Right image grid for About */
@@ -331,12 +359,9 @@ a.neon {
     background-image: url("../resources/profile.jpeg");
     background-size: 100%;
     position: absolute;
-    /* width: 40%; */
     background-repeat: no-repeat;
     background-position: right top;
     background-color: transparent;
-    /* min-height: 80vh; */
-    /* min-height: 80dvh; */
     height: 50vh;
     width: 50vh;
     border-radius: 100%;
@@ -356,11 +381,8 @@ a.neon {
 }
 
 #moocs {
-    /* background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/cloudmap-chroma.png"); */
     background-image: var(--moocsgradient);
     background-size: 400%;
-    /* background-color: transparent; */
-    /* opacity: 0; */
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     animation: bg-animate 20s infinite alternate;
@@ -372,6 +394,7 @@ a.neon {
     background-image: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png");
     background-size: 60%;
     background-position: left bottom;
+    transform: translate3d(3%,-5%,0);
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 }
@@ -399,13 +422,9 @@ a.neon {
 
 .slide-dots {
     position: absolute;
-    /* transform: translate3d(10rem, 70vh, 0); */
-    /* transform: ; */
-    /* min-height: 80vh; */
     top: 88%;
     left: 50%;
     transform: translateX(-50%);
-    /* margin-top: 100px; */
 }
 
 .slide-dots > a {
