@@ -55,7 +55,7 @@ const slide_dot_click = (entry) => {
     };
 }
 
-window.addEventListener("load", () => {
+const detect_default_resume_indicator_dot = () => {
     const origin = document.querySelector(".slide-indicator-active");
     const orig_section = origin.dataset.section;
     const [ox,oy] = slide_dest[orig_section];
@@ -64,4 +64,19 @@ window.addEventListener("load", () => {
     const left_container = document.querySelector(".left-description");
     img_container.style.transform = `translate3d(${ox}%, ${oy}vh, 0)`;
     left_container.style.transform = `translate3d(${oxl}%, ${oyl}vh, 0)`;
+}
+
+const detect_default_navbar_state = () => {
+    // const cur_state = document.querySelector(".active");
+    // const all_states = document.querySelectorAll(".menu > ul > li > a");
+    // console.log(cur_state.hash)
+    // console.log(all_states);
+
+    const content_block = document.querySelector(".content");
+    content_block.scrollTo(0, content_block.clientHeight);
+}
+
+window.addEventListener("load", () => {
+    detect_default_resume_indicator_dot();
+    detect_default_navbar_state();
 })
