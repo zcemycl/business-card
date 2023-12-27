@@ -14,6 +14,23 @@
     --motion-grid: cubic-bezier(.1,.7,.93,.55);
     --clr-neon: hsl(175, 64%, 33%);
     --border-radius-contant: .7em;
+    --overall-height: 100vh;
+    --overall-height-phone: 100dvh;
+    --cv-height: 95vh;
+    --cv-height-phone: 95dvh;
+    --cv-width: 80%;
+    --navbar-height: 6.5vh;
+    --navbar-height-phone: 6.5dvh;
+    --content-height: 80vh;
+    --content-height-phone: 80dvh;
+    --footer-height: 5vh;
+    --profile-pic-pos: right top;
+    --profile-pic-size: 50vh;
+    --profile-pic-size-phone: 50dvh;
+    --intro-left: 4rem;
+    --intro-bottom: 15%;
+    --intro-width: 50ch;
+    --active-navbar: hsl(175, 64%, 33%);
 }
 
 * {
@@ -26,8 +43,8 @@ body {
     font-family: basic-sans, sans-serif;
     font-size: 1.125em;
     text-decoration: none;
-    min-height: 100vh;
-    min-height: 100dvh;
+    min-height: var(--overall-height);
+    min-height: var(--overall-height-phone);
     display:flex;
     justify-content: center;
     align-items: center;
@@ -52,14 +69,13 @@ li {
 }
 
 .cv {
-    width: 80%;
-    min-height: 95vh;
-    min-height: 95dvh;
+    width: var(--cv-width);
+    min-height: var(--cv-height);
+    min-height: var(--cv-height-phone);
     border-radius: 1em;
     background-color: #171E37;
-    /* transform: translateY(2%); */
     overflow: hidden;
-    /* box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* navbar */
@@ -67,11 +83,11 @@ li {
     display: flex;
     align-items: space-between;
     justify-content: space-between;
-    border: 1px black solid;
     border-radius: var(--border-radius-contant) 0 0;
     background-color: #171E37;
     padding: 2vh 5% 0;
-    height: 6.5vh;
+    height: var(--navbar-height);
+    height: var(--navbar-height-phone);
 }
 
 .menu > ul{
@@ -85,9 +101,10 @@ li {
 }
 
 .active {
-    background-color: rgb(156, 12, 158);
+    /* background-color: var(--active-navbar); */
     padding: .5em 1em;
     border-radius: 1em .25em .1em;
+    box-shadow: inset 0 0 0.5em 0 var(--active-navbar), 0 0 0.5em 0 var(--active-navbar);
 }
 
 /* content in between navbar and footer*/
@@ -144,7 +161,6 @@ div.footer {
 
 a.neon {
     cursor: pointer;
-    color: hsl(323 21% 16%);
     background-color: var(--clr-neon);
     padding: 0.25em 1em;
     border-radius: 0.25em;
@@ -160,9 +176,10 @@ a.neon {
 /* Left description grid for About */
 .wrapper {
     width: 100%;
-    min-height: 80vh;
-    min-height: 80dvh;
-    max-height: 80vh;
+    min-height: var(--content-height);
+    min-height: var(--content-height-phone);
+    max-height: var(--content-height);
+    max-height: var(--content-height-phone);
     grid-column: 1 / 3;
     grid-row: 1 / 2;
     display: block;
@@ -180,15 +197,15 @@ a.neon {
     transform: translate3d(-50%, -80vh, 0);
     /* transform: translate3d(-50%, 0, 0); */
     color: white;
-    max-height: 80vh;
+    max-height: var(--content-height);
+    max-height: var(--content-height-phone);
     animation-timing-function: var(--motion-grid);
 }
 
 .left-description > div {
-    min-height: 80vh;
-    min-height: 80dvh;
+    min-height: var(--content-height);
+    min-height: var(--content-height-phone);
     width: 100%;
-    /* color: transparent; */
 }
 
 .left-description > div > div > ul {
@@ -225,12 +242,10 @@ a.neon {
 }
 
 .intro > div{
-    width: 50ch;
+    width: var(--intro-width);
     position: absolute;
-    /* top: 45%; */
-    bottom: 15%;
-    /* display: inline; */
-    /* color: white; */
+    bottom: var(--intro-bottom);
+    left: var(--intro-left);
 }
 
 .educations {
@@ -312,8 +327,8 @@ a.neon {
 /* Right image grid for About */
 .pics {
     width: 100%;
-    min-height: 80vh;
-    min-height: 80dvh;
+    min-height: var(--content-height);
+    min-height: var(--content-height-phone);
     grid-column: 1 / 3;
     grid-row: 1 / 2;
     display: block;
@@ -344,14 +359,13 @@ a.neon {
 .right-image > div {
     background-repeat: no-repeat;
     width: 100%;
-    min-height: 80vh;
-    min-height: 80dvh;
+    min-height: var(--content-height);
+    min-height: var(--content-height-phone);
     color: transparent;
     background-position: right;
 }
 
 #intro {
-    /* background-image: url("https://github.com/zcemycl/TF2DeepFloorplan/blob/main/resources/raycast.gif?raw=true"); */
     background-size: 100%;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -363,10 +377,12 @@ a.neon {
     background-size: 100%;
     position: absolute;
     background-repeat: no-repeat;
-    background-position: right top;
+    background-position: var(--profile-pic-pos);
     background-color: transparent;
-    height: 50vh;
-    width: 50vh;
+    height: var(--profile-pic-size);
+    height: var(--profile-pic-size-phone);
+    width: var(--profile-pic-size);
+    width: var(--profile-pic-size-phone);
     border-radius: 100%;
     border: 1px solid #171E37;
     right: 5%;
@@ -418,9 +434,6 @@ a.neon {
     top: 80%;
     height: 10vh;
     z-index: 2;
-    /* padding-left: 4rem;
-    top: 100px; */
-    
 }
 
 .slide-dots {
