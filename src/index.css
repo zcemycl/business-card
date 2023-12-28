@@ -35,7 +35,7 @@
     --rotateY-const: 10deg;
     --bg-color: rgb(15, 70, 83);
     --img-pos: center;
-    --card-brightness-const-x: 0.4;
+    --card-brightness-const-x: 0.3;
     --card-brightness-const-y: 0.3;
 }
 
@@ -485,7 +485,7 @@ a.neon {
     animation-timing-function: var(--motion-grid);
     column-gap: 1%;
     row-gap: 3%;
-    transform: scale3d(1.3, 1.3, 1);
+    transform: translate(0, 0);
     /* overflow: hidden; */
     /* transform: translate3d(0, -25%, 0); */
 }
@@ -526,39 +526,22 @@ a.neon {
 
 .project-card:nth-child(-n+15) > .project-card-content {
     --rotateX: var(--rotateX-const);
+    --brightnessX: calc(1*var(--card-brightness-const-x));
 }
 .project-card:nth-child(-n+10) > .project-card-content {
     --rotateX: 0;
+    --brightnessX: calc(0*var(--card-brightness-const-x))
 }
 .project-card:nth-child(-n+5) > .project-card-content {
     --rotateX: calc(-1*var(--rotateX-const));
-}
-
-/* .project-card:nth-child(-n+15) {
     --brightnessX: calc(1*var(--card-brightness-const-x));
 }
-.project-card:nth-child(-n+10) {
-    --brightnessX: 0
-}
-.project-card:nth-child(-n+5){
-    --brightnessX: calc(1*var(--card-brightness-const-x));
-} */
 
 .project-card {
     vertical-align: center;
     display: inline-block;
     align-items: center;
 }
-
-/* .project-card::after {
-    content: "";
-    display: inherit;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 
-        var(--brightnessX)
-    );
-} */
 
 .project-card:nth-child(1) > .project-card-content {
     --img-source: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png");
@@ -659,7 +642,17 @@ a.neon {
         rotateX(var(--rotateX))
         rotateY(var(--rotateY));
     border: 1px solid white;
-    /* box-shadow: 5px 5px 0 0 black; */
+    -webkit-mask-image: linear-gradient(
+        rgba(0, 0, 0, calc(1 - var(--brightnessX))), 
+        rgba(0, 0, 0, calc(1 - var(--brightnessX)))
+    );
+    mask-image: linear-gradient(
+        rgba(0, 0, 0, calc(1 - var(--brightnessX))), 
+        rgba(0, 0, 0, calc(1 - var(--brightnessX)))
+    );
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
 }
 
 .project-card-content::after {
