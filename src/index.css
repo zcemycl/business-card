@@ -33,8 +33,10 @@
     --active-navbar: hsl(175, 64%, 33%);
     --rotateX-const: 10deg;
     --rotateY-const: 10deg;
-    --bg-color: rgb(15, 70, 83);;
+    --bg-color: rgb(15, 70, 83);
     --img-pos: center;
+    --card-brightness-const-x: 0.4;
+    --card-brightness-const-y: 0.3;
 }
 
 * {
@@ -146,7 +148,7 @@ li {
 
 .content > section:nth-child(even) {
     /* background-color: rgb(15, 70, 83); */
-    background-color: black;
+    background-color: rgb(42, 31, 31);
 }
 
 .content > section:nth-child(even) > div {
@@ -488,15 +490,10 @@ a.neon {
     /* transform: translate3d(0, -25%, 0); */
 }
 
-.project-card {
-    vertical-align: center;
-    display:flex;
-    align-items: center;
-}
-
-.project-card:nth-child(5n+1) > .project-card-content{
+.project-card:nth-child(5n+1) > .project-card-content {
     --rotateY: calc(2*var(--rotateY-const));
 }
+
 .project-card:nth-child(5n+2) > .project-card-content {
     --rotateY: var(--rotateY-const);
 }
@@ -504,10 +501,27 @@ a.neon {
     --rotateY: 0;
 }
 .project-card:nth-child(5n+4) > .project-card-content {
-    --rotateY: calc(-1*var(--rotateY-const));;
+    --rotateY: calc(-1*var(--rotateY-const));
 }
 .project-card:nth-child(5n+5) > .project-card-content {
     --rotateY: calc(-2*var(--rotateY-const));
+}
+
+.project-card:nth-child(5n+1) > .project-card-content::after {
+    --brightnessY: calc(2*var(--card-brightness-const-y));
+}
+
+.project-card:nth-child(5n+2) > .project-card-content::after {
+    --brightnessY: calc(1*var(--card-brightness-const-y));
+}
+.project-card:nth-child(5n+3) > .project-card-content::after {
+    --brightnessY: 0;
+}
+.project-card:nth-child(5n+4) > .project-card-content::after {
+    --brightnessY: calc(1*var(--card-brightness-const-y));
+}
+.project-card:nth-child(5n+5) > .project-card-content::after {
+    --brightnessY: calc(2*var(--card-brightness-const-y));
 }
 
 .project-card:nth-child(-n+15) > .project-card-content {
@@ -519,6 +533,32 @@ a.neon {
 .project-card:nth-child(-n+5) > .project-card-content {
     --rotateX: calc(-1*var(--rotateX-const));
 }
+
+/* .project-card:nth-child(-n+15) {
+    --brightnessX: calc(1*var(--card-brightness-const-x));
+}
+.project-card:nth-child(-n+10) {
+    --brightnessX: 0
+}
+.project-card:nth-child(-n+5){
+    --brightnessX: calc(1*var(--card-brightness-const-x));
+} */
+
+.project-card {
+    vertical-align: center;
+    display: inline-block;
+    align-items: center;
+}
+
+/* .project-card::after {
+    content: "";
+    display: inherit;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 
+        var(--brightnessX)
+    );
+} */
 
 .project-card:nth-child(1) > .project-card-content {
     --img-source: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png");
@@ -606,9 +646,7 @@ a.neon {
 
 
 .project-card-content {
-    /* height: calc(80vh / 2); */
-    width: calc(100% );
-    background: var(--bg-color);
+    width: 100%;
     background-image: var(--img-source);
     background-repeat: no-repeat;
     background-size: var(--img-size);
@@ -622,4 +660,14 @@ a.neon {
         rotateY(var(--rotateY));
     border: 1px solid white;
     /* box-shadow: 5px 5px 0 0 black; */
+}
+
+.project-card-content::after {
+    content: "";
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0; 
+    background: rgba(0, 0, 0, 
+        var(--brightnessY)
+    );
+    pointer-events: none;
 }
