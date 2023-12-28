@@ -31,6 +31,10 @@
     --intro-bottom: 15%;
     --intro-width: 50ch;
     --active-navbar: hsl(175, 64%, 33%);
+    --rotateX-const: 10deg;
+    --rotateY-const: 10deg;
+    --bg-color: rgb(15, 70, 83);;
+    --img-pos: center;
 }
 
 * {
@@ -141,7 +145,8 @@ li {
 }
 
 .content > section:nth-child(even) {
-    background-color: rgb(15, 70, 83);
+    /* background-color: rgb(15, 70, 83); */
+    background-color: black;
 }
 
 .content > section:nth-child(even) > div {
@@ -467,8 +472,8 @@ a.neon {
 /* projects */
 .project-cards {
     width: 100%;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     display: grid;
     color: white;
     min-height: var(--content-height);
@@ -477,9 +482,10 @@ a.neon {
     max-height: var(--content-height-phone);
     animation-timing-function: var(--motion-grid);
     column-gap: 1%;
-    row-gap: 2%;
-    /* transform: scale3d(1, 1, 1); */
-    overflow: hidden;
+    row-gap: 3%;
+    transform: scale3d(1.3, 1.3, 1);
+    /* overflow: hidden; */
+    /* transform: translate3d(0, -25%, 0); */
 }
 
 .project-card {
@@ -488,11 +494,132 @@ a.neon {
     align-items: center;
 }
 
+.project-card:nth-child(5n+1) > .project-card-content{
+    --rotateY: calc(2*var(--rotateY-const));
+}
+.project-card:nth-child(5n+2) > .project-card-content {
+    --rotateY: var(--rotateY-const);
+}
+.project-card:nth-child(5n+3) > .project-card-content {
+    --rotateY: 0;
+}
+.project-card:nth-child(5n+4) > .project-card-content {
+    --rotateY: calc(-1*var(--rotateY-const));;
+}
+.project-card:nth-child(5n+5) > .project-card-content {
+    --rotateY: calc(-2*var(--rotateY-const));
+}
+
+.project-card:nth-child(-n+15) > .project-card-content {
+    --rotateX: var(--rotateX-const);
+}
+.project-card:nth-child(-n+10) > .project-card-content {
+    --rotateX: 0;
+}
+.project-card:nth-child(-n+5) > .project-card-content {
+    --rotateX: calc(-1*var(--rotateX-const));
+}
+
+.project-card:nth-child(1) > .project-card-content {
+    --img-source: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png");
+    --img-size: 200%;
+    --bg-pos: left center;
+}
+
+.project-card:nth-child(2) > .project-card-content {
+    --img-source: url("../resources/annotate.jpg");
+    --img-size: 400%;
+}
+
+.project-card:nth-child(3) > .project-card-content {
+    --img-source: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/src/tf/sqs-lambda-step/resources/architecture.png");
+    --img-size: 150%;
+}
+
+.project-card:nth-child(4) > .project-card-content {
+    --img-source: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/ddns.png");
+    --img-size: 150%;
+}
+
+.project-card:nth-child(5) > .project-card-content {
+    --img-source: url("https://github.com/zcemycl/systemDeploy/raw/main/docs/resources/cloudmap-chroma.png?raw=true");
+    --img-size: 200%;
+    --img-pos: right center;
+}
+
+.project-card:nth-child(6) > .project-card-content {
+    --img-source: url("https://github.com/zcemycl/TF2DeepFloorplan/blob/main/resources/postcolor.jpg?raw=true");
+    --img-size: 200%;
+    --img-pos: center;
+}
+
+.project-card:nth-child(7) > .project-card-content {
+    --img-source: url("https://github.com/zcemycl/TF2DeepFloorplan/blob/main/resources/raycast.gif?raw=true");
+    --img-size: 350%;
+    --img-pos: right center;
+}
+
+.project-card:nth-child(8) > .project-card-content {
+    --img-source: url("../resources/InfoGANcelebA.gif");
+    --img-size: 200%;
+}
+
+.project-card:nth-child(9) > .project-card-content {
+    --img-source: url("../resources/Calibration.gif");
+    --img-size: 150%;
+}
+
+.project-card:nth-child(10) > .project-card-content {
+    --img-source: url("https://raw.githubusercontent.com/zcemycl/ProbabilisticPerspectiveMachineLearning/master/LIME/result.png");
+    --img-size: 200%;
+    --img-pos: right center;
+}
+
+.project-card:nth-child(11) > .project-card-content {
+    --img-source: url("../resources/pcbuild.jpeg");
+    --img-size: 100%;
+}
+
+.project-card:nth-child(12) > .project-card-content {
+    --img-source: url("https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/Logo%20Projection/result.png");
+    --img-size: 500%;
+    --img-pos: 80% 50%;
+}
+
+.project-card:nth-child(13) > .project-card-content {
+    --img-source: url("https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/3D%20object%20projection/ar_result.png");
+    --img-size: 300%;
+    --img-pos: center;
+}
+
+.project-card:nth-child(14) > .project-card-content {
+    --img-source: url("../resources/threejsgame.gif");
+    --img-size: 400%;
+    --img-pos: center;
+}
+
+.project-card:nth-child(15) > .project-card-content {
+    --img-source: url("../resources/leafletuk.jpg");
+    --img-size: 400%;
+    --img-pos: center;
+}
+
+
 .project-card-content {
-    height: calc(80vh / 2);
-    background:white;
+    /* height: calc(80vh / 2); */
+    width: calc(100% );
+    background: var(--bg-color);
+    background-image: var(--img-source);
+    background-repeat: no-repeat;
+    background-size: var(--img-size);
+    background-position: var(--img-pos);
     aspect-ratio: 5/7;
     margin: auto;
-    border-radius: 5%;
+    border-radius: 2%;
+    transform: 
+        perspective(500px)
+        rotateX(var(--rotateX))
+        rotateY(var(--rotateY));
+    border: 1px solid white;
     /* box-shadow: 5px 5px 0 0 black; */
 }
