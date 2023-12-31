@@ -395,7 +395,7 @@ a.neon {
 
 
 #educations {
-    background-image: url("https://github.com/zcemycl/TF2DeepFloorplan/blob/main/resources/raycast.gif?raw=true");
+    background-image: url("../resources/raycast.gif");
     background-size: 50%;
     background-position: right bottom;
     transform: translate3d(-5%,-15%,0);
@@ -612,7 +612,7 @@ a.neon {
 }
 
 .project-card:nth-child(7) > .project-card-content {
-    --img-source: url("https://github.com/zcemycl/TF2DeepFloorplan/blob/main/resources/raycast.gif?raw=true");
+    --img-source: url("../resources/raycast.gif");
     --img-size: 350%;
     --img-pos: right center;
 }
