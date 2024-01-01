@@ -472,7 +472,7 @@ a.neon {
 }
 
 /* projects */
-.project-cards {
+/* .project-cards {
     width: 100%;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -698,4 +698,20 @@ a.neon {
         var(--brightnessY)
     );
     pointer-events: none;
+} */
+
+.project-cards {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    min-height: var(--content-height);
+    min-height: var(--content-height-phone);
+    max-height: var(--content-height);
+    max-height: var(--content-height-phone);
+    transform: scale3d(1.5, 1.5, 1);
+}
+
+.project-row {
+    height: calc(var(--content-height)/5);
+    border: 1px solid white; 
 }
