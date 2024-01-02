@@ -37,6 +37,15 @@
     --img-pos: center;
     --card-brightness-const-x: 0.3;
     --card-brightness-const-y: 0.3;
+    --project-card-column-gap: 1%;
+    --project-card-translate-x: calc( -1 * (5 * 7 * (80vh - 6%) / 3 / 7 + 6%) / 2 + 50%);
+}
+
+@media (min-width: 1500px) {
+    :root {
+        --project-card-column-gap: 0;
+        --project-card-translate-x: 0;
+    }
 }
 
 * {
@@ -578,36 +587,6 @@ a.neon {
     align-items: center;
 }
 
-.project-card:nth-child(11) > .project-card-content {
-    --img-source: url("../resources/pcbuild.jpeg");
-    --img-size: 100%;
-}
-
-.project-card:nth-child(12) > .project-card-content {
-    --img-source: url("https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/Logo%20Projection/result.png");
-    --img-size: 500%;
-    --img-pos: 80% 50%;
-}
-
-.project-card:nth-child(13) > .project-card-content {
-    --img-source: url("https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/3D%20object%20projection/ar_result.png");
-    --img-size: 300%;
-    --img-pos: center;
-}
-
-.project-card:nth-child(14) > .project-card-content {
-    --img-source: url("../resources/threejsgame.gif");
-    --img-size: 400%;
-    --img-pos: center;
-}
-
-.project-card:nth-child(15) > .project-card-content {
-    --img-source: url("../resources/leafletuk.jpg");
-    --img-size: 400%;
-    --img-pos: center;
-}
-
-
 .project-card-content {
     width: 100%;
     background-image: var(--img-source);
@@ -659,16 +638,16 @@ a.neon {
 .project-row {
     height: calc(var(--content-height)/3);
     display: flex;
-    column-gap: 1%;
+    column-gap: var(--project-card-column-gap);
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
     padding: 1% 0;
-    transform: 
-        translateX(calc( -1 * (5 * 7 * (var(--content-height) - 6%) / 3 / 7 + 6%) / 2 + 50%));
+    transform: translateX(var(--project-card-translate-x));
 }
 
 .project-card {
-    vertical-align: center;
+    vertical-align: center; 
     display: inline-block;
     align-items: center;
     height: 100%;
@@ -730,6 +709,76 @@ a.neon {
     --img-pos: right center;
 }
 
+.project-row:nth-child(3) .project-card:nth-child(1) .project-card-content {
+    --img-source: url("../resources/pcbuild.jpeg");
+    --img-size: 100%;
+}
+
+.project-row:nth-child(3) .project-card:nth-child(2) .project-card-content {
+    --img-source: url("https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/Logo%20Projection/result.png");
+    --img-size: 500%;
+    --img-pos: 80% 50%;
+}
+
+.project-row:nth-child(3) .project-card:nth-child(3) .project-card-content {
+    --img-source: url("https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/3D%20object%20projection/ar_result.png");
+    --img-size: 300%;
+    --img-pos: center;
+}
+
+.project-row:nth-child(3) .project-card:nth-child(4) .project-card-content {
+    --img-source: url("../resources/threejsgame.gif");
+    --img-size: 400%;
+    --img-pos: center;
+}
+
+.project-row:nth-child(3) .project-card:nth-child(5) .project-card-content {
+    --img-source: url("../resources/leafletuk.jpg");
+    --img-size: 400%;
+    --img-pos: center;
+}
+
+.project-row:nth-child(1) .project-card .project-card-content {
+    --rotateX: calc(-1*var(--rotateX-const));
+}
+
+.project-row:nth-child(2) .project-card .project-card-content {
+    --rotateX: calc(0*var(--rotateX-const));
+}
+
+.project-row:nth-child(3) .project-card .project-card-content {
+    --rotateX: calc(1*var(--rotateX-const));
+}
+
+.project-row .project-card:nth-child(1) .project-card-content {
+    --rotateY: calc(3*var(--rotateY-const));
+}
+
+.project-row .project-card:nth-child(2) .project-card-content {
+    --rotateY: calc(2*var(--rotateY-const));
+}
+
+.project-row .project-card:nth-child(3) .project-card-content {
+    --rotateY: calc(1*var(--rotateY-const));
+}
+
+.project-row .project-card:nth-child(4) .project-card-content {
+    --rotateY: calc(0*var(--rotateY-const));
+}
+
+.project-row .project-card:nth-child(5) .project-card-content {
+    --rotateY: calc(-1*var(--rotateY-const));
+}
+
+.project-row .project-card:nth-child(6) .project-card-content {
+    --rotateY: calc(-2*var(--rotateY-const));
+}
+
+.project-row .project-card:nth-child(7) .project-card-content {
+    --rotateY: calc(-3*var(--rotateY-const));
+}
+
+
 .project-card-content {
     height: 100%;
     background-image: var(--img-source);
@@ -740,4 +789,8 @@ a.neon {
     margin: auto;
     border-radius: 2%;
     background-color: black;
+    transform: 
+        perspective(500px)
+        rotateX(var(--rotateX))
+        rotateY(var(--rotateY));
 }
