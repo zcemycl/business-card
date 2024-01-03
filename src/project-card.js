@@ -19,25 +19,25 @@ console.log(projectRow.getBoundingClientRect(),
 // })
 
 const nav_project_left = () => {
-    default_width -= (width_const+cardGap);
+    default_width += (width_const+cardGap);
     let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.transform = `translateX(${default_width}px) scale(1.3)`
+    projectCards_.style.transform = `translate3d(${default_width}px, ${default_height}px, 0) scale(1.3)`
 }
 
 const nav_project_right = () => {
-    default_width += (width_const+cardGap);
+    default_width -= (width_const+cardGap);
     let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.transform = `translateX(${default_width}px) scale(1.3)`
+    projectCards_.style.transform = `translate3d(${default_width}px, ${default_height}px, 0) scale(1.3)`
 }
 
 const nav_project_top = () => {
     default_height += height_const/3*1.3;
     let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.transform = `translateY(${default_height}px) scale(1.3)`
+    projectCards_.style.transform = `translate3d(${default_width}px, ${default_height}px, 0) scale(1.3)`
 }
 
 const nav_project_bot = () => {
     default_height -= height_const/3*1.3;
     let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.transform = `translateY(${default_height}px) scale(1.3)`
+    projectCards_.style.transform = `translate3d(${default_width}px, ${default_height}px, 0) scale(1.3)`
 }
