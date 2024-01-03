@@ -749,7 +749,7 @@ a.neon {
     --img-size: 400%;
     --img-pos: center;
 }
-
+/* 
 .project-row:nth-child(1) .project-card .project-card-content {
     --rotateX: calc(-1*var(--rotateX-const));
 }
@@ -788,7 +788,7 @@ a.neon {
 
 .project-row .project-card:nth-child(7) .project-card-content {
     --rotateY: calc(-3*var(--rotateY-const));
-}
+} */
 
 
 .project-card-content {
