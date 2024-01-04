@@ -1,4 +1,3 @@
-
 const slide_dest = {
     intro: [0,0],
     educations: [0,-80],
@@ -16,15 +15,6 @@ const slide_dest_left = {
 const timing = {
     duration: 1200,
     iterations: 1,
-  };
-
-const generate_keyframes = (ox, oy, dx, dy) => {
-    return keyframes = [
-        { transform: `translate3d(${ox}%, ${oy}vh, 0)`, opacity: 1 },
-        { transform: `translate3d(${(ox+dx)/2}%, ${oy}vh, 0)`, opacity: 0 },
-        { transform: `translate3d(${(ox+dx)/2}%, ${(oy+dy)/2}vh, 0)`, opacity: 0 },
-        { transform: `translate3d(${dx}%, ${dy}vh, 0)`, opacity: 1 }
-    ]
 };
 
 const slide_dot_click = (entry) => {
@@ -37,18 +27,13 @@ const slide_dot_click = (entry) => {
         const left_container = document.querySelector(".left-description");
 
         const [dx,dy] = slide_dest[dest_section];
-        const [ox,oy] = slide_dest[orig_section];
         const [dxl,dyl] = slide_dest_left[dest_section];
-        const [oxl,oyl] = slide_dest_left[orig_section];
 
-        const right_keyframes = generate_keyframes(ox, oy, dx, dy);
-        const left_keyframes = generate_keyframes(oxl, oyl, dxl, dyl);
-        
-        img_container.animate(right_keyframes, timing);
-        img_container.style.transform = `translate3d(${dx}%, ${dy}vh, 0)`;
+        img_container.style.cssText = `--translateX: ${dx}%; 
+            --translateY: ${dy}vh`
 
-        left_container.animate(left_keyframes, timing);
-        left_container.style.transform = `translate3d(${dxl}%, ${dyl}vh, 0)`
+        left_container.style.cssText = `--translateX: ${dxl}%; 
+            --translateY: ${dyl}vh`
 
         origin.classList.remove("slide-indicator-active");
         dest.classList.add("slide-indicator-active");

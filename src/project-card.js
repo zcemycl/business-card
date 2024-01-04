@@ -10,13 +10,16 @@ const extract_vertical_horizontal_const = () => {
 let [height_const, width_const] = extract_vertical_horizontal_const();
 let default_height_index = 0;
 let default_width_index = 0;
+const projectCardTiming = {duration: 1500, iterations: 1};
 
 const nav_project_left = () => {
     default_width_index += 1;
     let default_width = default_width_index*width_const;
     let default_height = default_height_index*height_const/3*1.3;
     let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.transform = `translate3d(${default_width}px, ${default_height}px, 0) scale(1.3)`
+    projectCards_.style.cssText = `
+        --translateX: ${default_width}px; 
+        --translateY: ${default_height}px;`
 }
 
 const nav_project_right = () => {
@@ -24,7 +27,9 @@ const nav_project_right = () => {
     let default_width = default_width_index*width_const;
     let default_height = default_height_index*height_const/3*1.3;
     let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.transform = `translate3d(${default_width}px, ${default_height}px, 0) scale(1.3)`
+    projectCards_.style.cssText = `
+        --translateX: ${default_width}px; 
+        --translateY: ${default_height}px;`
 }
 
 const nav_project_top = () => {
@@ -32,7 +37,9 @@ const nav_project_top = () => {
     let default_width = default_width_index*width_const;
     let default_height = default_height_index*height_const/3*1.3;
     let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.transform = `translate3d(${default_width}px, ${default_height}px, 0) scale(1.3)`
+    projectCards_.style.cssText = `
+        --translateX: ${default_width}px; 
+        --translateY: ${default_height}px;`
 }
 
 const nav_project_bot = () => {
@@ -40,10 +47,11 @@ const nav_project_bot = () => {
     let default_width = default_width_index*width_const;
     let default_height = default_height_index*height_const/3*1.3;
     let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.transform = `translate3d(${default_width}px, ${default_height}px, 0) scale(1.3)`
+    projectCards_.style.cssText = `
+        --translateX: ${default_width}px; 
+        --translateY: ${default_height}px;`
 }
 
 window.addEventListener("resize", () => {
     [height_const, width_const] = extract_vertical_horizontal_const();
-    console.log(height_const, width_const)
 })
