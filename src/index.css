@@ -677,90 +677,99 @@ a.neon {
     aspect-ratio: 5/7;
 }
 
-.project-row:nth-child(1) .project-card:nth-child(1) .project-card-content {
+.project-row:nth-child(1) .project-card-mlops .project-card-content {
     --img-source: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png");
     --img-size: 200%;
     --img-pos: left center;
 }
 
-.project-row:nth-child(1) .project-card:nth-child(2) .project-card-content {
+.project-row:nth-child(1) .project-card-annotate .project-card-content {
     --img-source: url("../resources/annotate.jpg");
     --img-size: 400%;
 }
 
-.project-row:nth-child(1) .project-card:nth-child(3) .project-card-content {
+.project-row:nth-child(1) .project-card-queue-retry .project-card-content {
     --img-source: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/src/tf/sqs-lambda-step/resources/architecture.png");
     --img-size: 150%;
 }
 
-.project-row:nth-child(1) .project-card:nth-child(4) .project-card-content {
+.project-row:nth-child(1) .project-card-ddns .project-card-content {
     --img-source: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/ddns.png");
     --img-size: 170%;
 }
 
-.project-row:nth-child(1) .project-card:nth-child(5) .project-card-content {
+.project-row:nth-child(1) .project-card-chroma .project-card-content {
     --img-source: url("https://github.com/zcemycl/systemDeploy/raw/main/docs/resources/cloudmap-chroma.png?raw=true");
     --img-size: 200%;
     --img-pos: right center;
 }
 
-.project-row:nth-child(2) .project-card:nth-child(1) .project-card-content {
+.project-row:nth-child(2) .project-card-dfp .project-card-content {
     --img-source: url("https://github.com/zcemycl/TF2DeepFloorplan/blob/main/resources/postcolor.jpg?raw=true");
     --img-size: 200%;
     --img-pos: center;
 }
 
-.project-row:nth-child(2) .project-card:nth-child(2) .project-card-content {
+.project-row:nth-child(2) .project-card-raycast .project-card-content {
     --img-source: url("../resources/raycast.gif");
     --img-size: 350%;
     --img-pos: right center;
 }
 
-.project-row:nth-child(2) .project-card:nth-child(3) .project-card-content {
+.project-row:nth-child(2) .project-card-infogan .project-card-content {
     --img-source: url("../resources/InfoGANcelebA.gif");
     --img-size: 200%;
 }
 
-.project-row:nth-child(2) .project-card:nth-child(4) .project-card-content {
+.project-row:nth-child(2) .project-card-robot-arm .project-card-content {
     --img-source: url("../resources/Calibration.gif");
     --img-size: 150%;
 }
 
-.project-row:nth-child(2) .project-card:nth-child(5) .project-card-content {
+.project-row:nth-child(2) .project-card-lime .project-card-content {
     --img-source: url("https://raw.githubusercontent.com/zcemycl/ProbabilisticPerspectiveMachineLearning/master/LIME/result.png");
     --img-size: 200%;
     --img-pos: right center;
 }
 
-.project-row:nth-child(3) .project-card:nth-child(1) .project-card-content {
+.project-row:nth-child(3) .project-card-custom-pc .project-card-content {
     --img-source: url("../resources/pcbuild.jpeg");
     --img-size: 100%;
 }
 
-.project-row:nth-child(3) .project-card:nth-child(2) .project-card-content {
+.project-row:nth-child(3) .project-card-2d-homo .project-card-content {
     --img-source: url("https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/Logo%20Projection/result.png");
     --img-size: 500%;
     --img-pos: 80% 50%;
 }
 
-.project-row:nth-child(3) .project-card:nth-child(3) .project-card-content {
+.project-row:nth-child(3) .project-card-ar .project-card-content {
     --img-source: url("https://raw.githubusercontent.com/zcemycl/Robotics/master/Perception/3D%20object%20projection/ar_result.png");
     --img-size: 300%;
     --img-pos: center;
+    /* height: 0; */
 }
 
-.project-row:nth-child(3) .project-card:nth-child(4) .project-card-content {
+/* .project-row:nth-child(3) div:nth-child(3) {
+    height: 0;
+} */
+
+.project-row:nth-child(3) .project-card-3jsgame .project-card-content {
     --img-source: url("../resources/threejsgame.gif");
     --img-size: 400%;
     --img-pos: center;
 }
 
-.project-row:nth-child(3) .project-card:nth-child(5) .project-card-content {
+.project-row:nth-child(3) .project-card-leaflet-map .project-card-content {
     --img-source: url("../resources/leafletuk.jpg");
     --img-size: 400%;
     --img-pos: center;
 }
-/* 
+
+.project-row:nth-child(3) .project-card:nth-child(7) .project-card-content {
+    height: 0;
+}
+
 .project-row:nth-child(1) .project-card .project-card-content {
     --rotateX: calc(-1*var(--rotateX-const));
 }
@@ -799,7 +808,7 @@ a.neon {
 
 .project-row .project-card:nth-child(7) .project-card-content {
     --rotateY: calc(-3*var(--rotateY-const));
-} */
+}
 
 
 .project-card-content {
@@ -816,6 +825,7 @@ a.neon {
         perspective(500px)
         rotateX(var(--rotateX))
         rotateY(var(--rotateY));
+    transition: all 1s;
 }
 
 button.nav-project-btn {

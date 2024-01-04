@@ -12,14 +12,31 @@ let default_height_index = 0;
 let default_width_index = 0;
 const projectCardTiming = {duration: 1500, iterations: 1};
 
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 const nav_project_left = () => {
     default_width_index += 1;
     let default_width = default_width_index*width_const;
     let default_height = default_height_index*height_const/3*1.3;
     let projectCards_ = document.querySelector(".project-cards");
+
     projectCards_.style.cssText = `
         --translateX: ${default_width}px; 
         --translateY: ${default_height}px;`
+
+    // sleep(500).then(() => {
+    //     Array.from(projectCards_.children).forEach(row => {
+    //         let cards = Array.from(row.children);
+    //         const lastone = cards.pop();
+    //         // const firstone = cards.shift();
+    //         // console.log(lastone, firstone)
+    //         cards.unshift(lastone);
+    //         row.replaceChildren(...cards)
+    //     })
+    // });
+
 }
 
 const nav_project_right = () => {
