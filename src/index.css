@@ -103,6 +103,7 @@ li {
     padding: 2vh 5% 0;
     height: var(--navbar-height);
     height: var(--navbar-height-phone);
+    /* transition: all 500ms; */
 }
 
 .menu > ul{
@@ -213,7 +214,7 @@ a.neon {
     color: white;
     max-height: var(--content-height);
     max-height: var(--content-height-phone);
-    transition: all 1s;
+    transition: transform 1s;
     transform: 
         translate3d(var(--translateX), var(--translateY), 0);
     animation-timing-function: var(--motion-grid);
@@ -369,7 +370,7 @@ a.neon {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     display: grid;
-    transition: all 1s;
+    transition: transform 1s;
     animation-timing-function: var(--motion-grid);
     transform: 
         translate3d(var(--translateX), var(--translateY), 0);
