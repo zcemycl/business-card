@@ -2,6 +2,9 @@ const cards_ = Array.from(document.querySelectorAll(".card-content"));
 const space_cards = cards_[1].getBoundingClientRect().left -
     cards_[0].getBoundingClientRect().left;
 let parser = new DOMParser();
+const center_x = 1;
+const rotate_y_const = 15;
+const rotate_x_const = 15;
 
 const btn_animate = () => {
     let copies = []
@@ -41,14 +44,20 @@ const btn_animate2 = () => {
     lastcard.classList.add("last-card-motion");
     lastcard.addEventListener("animationend", () => {
         lastcard.style.cssText = '--opacity: 0; --translateY: 5vh';
-        cards.forEach((card) => {
-            card.style.cssText = `--second-translate-x: ${space_cards}px;`
+        cards.forEach((card, idx) => {
+            console.log(idx)
+            card.style.cssText = `
+                --second-translate-x: ${space_cards}px;
+                --prev_rotateY: ${(idx-center_x)*rotate_y_const}deg;
+                --rotateX: ${rotate_x_const}deg; 
+                --rotateY: ${(idx-center_x+1)*rotate_y_const}deg;
+            `
             card.classList.add("rest-card-motion");
         })
     }, {once: true})
 
     cards[1].addEventListener("animationend", () => {
-        cards.forEach((card) => {
+        cards.forEach((card, idx) => {
             card.style.cssText = `--translateX: ${space_cards}px;`
             card.classList.remove("rest-card-motion");
         })
@@ -58,8 +67,13 @@ const btn_animate2 = () => {
         cards.forEach((card, idx) => {
             let copy = card.cloneNode(true)
             copy.style.cssText = ""
-            if (idx===0) 
+            if (idx===0) {
+                copy.style.cssText = `
+                    --rotateX: ${rotate_x_const}deg;
+                    --rotateY: ${(idx-center_x)*rotate_y_const}deg;
+                `
                 copy.classList.add("last-card-motion2")
+            }
             copies.push(copy)
         })
         const content = document.querySelector('.content2');
@@ -67,6 +81,7 @@ const btn_animate2 = () => {
 
         copies[0].addEventListener("animationend", () => {
             copies[0].classList.remove("last-card-motion2");
+            copies[0].style.cssText = "";
         }, {once: true})    
     }, {once: true})
 }
