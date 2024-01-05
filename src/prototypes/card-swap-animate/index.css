@@ -32,6 +32,21 @@ body {
     gap: 2%;
 }
 
+.card-content:nth-child(1) {
+    --rotateX: 15deg;
+    --rotateY: -15deg;
+}
+
+.card-content:nth-child(2) {
+    --rotateX: 15deg;
+    --rotateY: 0;
+}
+
+.card-content:nth-child(3) {
+    --rotateX: 15deg;
+    --rotateY: 15deg;
+}
+
 .card-content {
     --opacity: 1;
     --translateX: 0;
@@ -41,9 +56,13 @@ body {
     width: calc(80% / 3);
     height: 20vh;
     background-color: white;    
+    border-radius: 1rem;
+    padding: 1rem;
     transition: transform 250ms, opacity 250ms;
     opacity: var(--opacity);
     transform: 
+        rotateX(var(--rotateX))
+        rotateY(var(--rotateY))
         translateX(var(--translateX))
         translateY(var(--translateY));
 }
@@ -76,6 +95,22 @@ body {
     gap: 2%;
 }
 
+
+.card-content2:nth-child(1) {
+    --rotateX: 15deg;
+    --rotateY: -15deg;
+}
+
+.card-content2:nth-child(2) {
+    --rotateX: 15deg;
+    --rotateY: 0;
+}
+
+.card-content2:nth-child(3) {
+    --rotateX: 15deg;
+    --rotateY: 15deg;
+}
+
 .card-content2 {
     --opacity: 1;
     --translateX: 0;
@@ -85,8 +120,12 @@ body {
     width: calc(80% / 3);
     height: 20vh;
     background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
     opacity: var(--opacity);
     transform: 
+        rotateX(var(--rotateX))
+        rotateY(var(--rotateY))
         translateX(var(--translateX))
         translateY(var(--translateY));
 }
