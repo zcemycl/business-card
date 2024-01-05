@@ -10,7 +10,6 @@ body {
     align-items: center;
     justify-content: center;
     vertical-align: center;
-    /* display:block; */
     display: flex;
 }
 
@@ -34,24 +33,34 @@ body {
 }
 
 .card-content {
+    --opacity: 1;
+    --translateX: 0;
+    --translateY: 0;
     --first-translate-y: 5vh;
     --second-translate-x: 200px;
     width: calc(80% / 3);
     height: 20vh;
     background-color: white;    
-    transition: transform 500ms, opacity 500ms;
+    transition: transform 250ms, opacity 250ms;
+    opacity: var(--opacity);
+    transform: 
+        translateX(var(--translateX))
+        translateY(var(--translateY));
 }
 
 .card-down-animate {
     opacity: 0;
+    transition: transform 250ms, opacity 250ms;
     transform: 
+        translateX(0)
         translateY(var(--first-translate-y));
 }
 
 .card-right-animate {
     opacity: 1;
     transform:
-        translateX(var(--second-translate-x));
+        translateX(var(--second-translate-x))
+        translateY(0);
 }
 
 
@@ -83,7 +92,7 @@ body {
 }
 
 .last-card-motion {
-    animation: last-card-keyframes 500ms ease;
+    animation: last-card-keyframes 250ms ease;
 }
 
 @keyframes last-card-keyframes {
@@ -103,12 +112,19 @@ body {
 }
 
 .last-card-motion2 {
-    animation: last-card-keyframes2 500ms ease;
+    animation: last-card-keyframes2 250ms ease;
 }
 
 @keyframes last-card-keyframes2{
     from {
         opacity: 0;
+        transform: 
+            translateX(0)
+            translateY(5vh);
+    }
+
+    65% {
+        opacity: 0.7;
         transform: 
             translateX(0)
             translateY(5vh);

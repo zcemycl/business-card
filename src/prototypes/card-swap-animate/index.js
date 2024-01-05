@@ -4,6 +4,7 @@ const space_cards = cards_[1].getBoundingClientRect().left -
 let parser = new DOMParser();
 
 const btn_animate = () => {
+    let copies = []
     let cards = Array.from(document.querySelectorAll(".card-content"));
     const lastcard = cards.pop()
     lastcard.classList.add("card-down-animate");
@@ -15,18 +16,22 @@ const btn_animate = () => {
     }, {once: true})
 
     cards[1].addEventListener("transitionend", () => {
-        cards.unshift(lastcard)
+        cards.unshift(lastcard);
+        let copy; 
+        const content = document.querySelector('.content');
         cards.forEach((card, idx) => {
-            if (idx > 0) {
-                card.classList.remove("card-right-animate");
-                card.style.removeProperty("--second-translate-x");
+            if (idx===0) {
+                copies.push(card)
+            } else {
+                copy = card.cloneNode(true)
+                copy.style.cssText = ""
+                copy.classList.remove("card-right-animate");
+                copies.push(copy)
             }
         })
-        const content = document.querySelector('.content');
-        content.replaceChildren(...cards);
-        lastcard.classList.remove("card-down-animate");
+        content.replaceChildren(...copies);
+        copies[0].classList.remove("card-down-animate");
     }, {once: true})
-
 }
 
 const btn_animate2 = () => {
@@ -41,10 +46,8 @@ const btn_animate2 = () => {
             card.classList.add("rest-card-motion");
         })
     }, {once: true})
-    
 
     cards[1].addEventListener("animationend", () => {
-        
         cards.forEach((card) => {
             card.style.cssText = `--translateX: ${space_cards}px;`
             card.classList.remove("rest-card-motion");
@@ -66,5 +69,4 @@ const btn_animate2 = () => {
             copies[0].classList.remove("last-card-motion2");
         }, {once: true})    
     }, {once: true})
-
 }
