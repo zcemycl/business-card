@@ -30,6 +30,7 @@ const btn_animate = () => {
 }
 
 const btn_animate2 = () => {
+    let copies = []
     let cards = Array.from(document.querySelectorAll(".card-content2"));
     let lastcard = cards.pop()
     lastcard.classList.add("last-card-motion");
@@ -51,18 +52,19 @@ const btn_animate2 = () => {
         lastcard.classList.remove("last-card-motion")
         cards.unshift(lastcard)
 
-        let copies = []
-        cards.forEach((card) => {
-            // const cardCopy = parser.parseFromString(card.outerHTML, 'text/html');
-            // console.log(cardCopy.firstChild)
+        cards.forEach((card, idx) => {
             let copy = card.cloneNode(true)
             copy.style.cssText = ""
-            console.log(copy)
+            if (idx===0) 
+                copy.classList.add("last-card-motion2")
             copies.push(copy)
         })
-        console.log(copies)
         const content = document.querySelector('.content2');
         content.replaceChildren(...copies);
+
+        copies[0].addEventListener("animationend", () => {
+            copies[0].classList.remove("last-card-motion2");
+        }, {once: true})    
     }, {once: true})
-    
+
 }

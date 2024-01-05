@@ -83,7 +83,7 @@ body {
 }
 
 .last-card-motion {
-    animation: last-card-keyframes 1s linear;
+    animation: last-card-keyframes 500ms ease;
 }
 
 @keyframes last-card-keyframes {
@@ -103,7 +103,7 @@ body {
 }
 
 .last-card-motion2 {
-    animation: last-card-keyframes2 1s linear;
+    animation: last-card-keyframes2 500ms ease;
 }
 
 @keyframes last-card-keyframes2{
@@ -123,7 +123,7 @@ body {
 }
 
 .rest-card-motion {
-    animation: rest-card-keyframes 1s linear;
+    animation: rest-card-keyframes 500ms ease;
 }
 
 @keyframes rest-card-keyframes {
