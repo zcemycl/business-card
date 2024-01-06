@@ -7,7 +7,7 @@ const extract_vertical_horizontal_const = () => {
     projectCards.style.cssText = `
         --translateX: ${lefto+widtho/2-left-width/2}px;
     `
-    
+
     const projectRowCards = document.querySelectorAll(".project-row:nth-child(1) .project-card");
     const height_const = projectCards.clientHeight;
     const width_const = projectRowCards[1].getBoundingClientRect().left -
@@ -18,7 +18,7 @@ const extract_vertical_horizontal_const = () => {
 let [height_const, width_const] = extract_vertical_horizontal_const();
 let default_height_index = 0;
 let default_width_index = 0;
-const scaleContent = 1.3;
+const scaleContent = 1;
 const projectCardTiming = {duration: 1500, iterations: 1};
 
 function sleep (time) {
@@ -34,18 +34,6 @@ const nav_project_left = () => {
     projectCards_.style.cssText = `
         --translateX: ${default_width}px; 
         --translateY: ${default_height}px;`
-
-    // sleep(500).then(() => {
-    //     Array.from(projectCards_.children).forEach(row => {
-    //         let cards = Array.from(row.children);
-    //         const lastone = cards.pop();
-    //         // const firstone = cards.shift();
-    //         // console.log(lastone, firstone)
-    //         cards.unshift(lastone);
-    //         row.replaceChildren(...cards)
-    //     })
-    // });
-
 }
 
 const nav_project_right = () => {
