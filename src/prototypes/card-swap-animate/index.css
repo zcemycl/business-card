@@ -124,10 +124,11 @@ body {
     padding: 1rem;
     opacity: var(--opacity);
     transform: 
+        translateX(var(--translateX))
+        translateY(var(--translateY))
         rotateX(var(--rotateX))
         rotateY(var(--rotateY))
-        translateX(var(--translateX))
-        translateY(var(--translateY));
+    ;
 }
 
 .last-card-motion {

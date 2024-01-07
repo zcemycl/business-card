@@ -751,10 +751,6 @@ a.neon {
     /* height: 0; */
 }
 
-/* .project-row:nth-child(3) div:nth-child(3) {
-    height: 0;
-} */
-
 .project-row:nth-child(3) .project-card-3jsgame .project-card-content {
     --img-source: url("../resources/threejsgame.gif");
     --img-size: 400%;
@@ -809,6 +805,11 @@ a.neon {
 
 
 .project-card-content {
+    --opacity: 1;
+    --translateX: 0;
+    --translateY: 0;
+    --first-translate-y: 5vh;
+    --second-translate-x: 200px;
     height: 100%;
     background-image: var(--img-source);
     background-repeat: no-repeat;
@@ -818,11 +819,77 @@ a.neon {
     margin: auto;
     border-radius: 2%;
     background-color: black;
+    border: 1px solid white;
+    opacity: var(--opacity);
     transform: 
         perspective(500px)
+        translateX(var(--translateX))
+        translateY(var(--translateY))
         rotateX(var(--rotateX))
-        rotateY(var(--rotateY));
-    transition: all 1s;
+        rotateY(var(--rotateY))
+    ;
+}
+
+.last-card-motion {
+    animation: last-card-keyframes 250ms ease;
+}
+
+@keyframes last-card-keyframes {
+    to {
+        opacity: 0;
+        transform: 
+            perspective(500px)
+            translateX(0)
+            translateY(5vh);
+    }
+}
+
+.last-card-motion2 {
+    animation: last-card-keyframes2 250ms ease;
+}
+
+@keyframes last-card-keyframes2{
+    from {
+        opacity: 0;
+        transform: 
+            perspective(500px)
+            translateX(0)
+            translateY(5vh);
+    }
+
+    to {
+        opacity: 1;
+        transform: 
+            perspective(500px)
+            translateX(0)
+            translateY(0)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+        ;
+    }
+}
+
+.rest-card-motion {
+    animation: rest-card-keyframes 2000ms ease;
+}
+
+@keyframes rest-card-keyframes {
+    /* from {
+        transform: 
+            perspective(500px)
+            translateX(0)
+            rotateX(var(--rotateX))   
+            rotateY(var(--prev_rotateY))
+        ;
+    } */
+    to {
+        transform: 
+            perspective(500px)
+            translateX(var(--second-translate-x))
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+        ;
+    }
 }
 
 button.nav-project-btn {
