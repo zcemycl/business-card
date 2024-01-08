@@ -838,9 +838,19 @@ a.neon {
     to {
         opacity: 0;
         transform: 
-            perspective(500px)
-            translateX(0)
             translateY(5vh);
+    }
+}
+
+.last-card-content-motion {
+    animation: last-card-content-keyframes 250ms ease;
+}
+
+@keyframes last-card-content-keyframes {
+    to {
+        transform: 
+            perspective(500px)
+            rotate3d(0, 0, 0, 20deg);
     }
 }
 
