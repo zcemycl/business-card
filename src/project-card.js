@@ -8,14 +8,18 @@ const extract_vertical_horizontal_const = () => {
         --translateX: ${lefto+widtho/2-left-width/2}px;
     `
 
-    const projectRowCards = document.querySelectorAll(".project-row:nth-child(1) .project-card");
-    const height_const = projectCards.clientHeight;
+    const projectRowCards = document.querySelectorAll(
+        ".project-row:nth-child(1) .project-card");
+    const projectRows = document.querySelectorAll(".project-row");
+    const height_const = projectRows[1].getBoundingClientRect().top -
+        projectRows[0].getBoundingClientRect().top;
     const width_const = projectRowCards[1].getBoundingClientRect().left -
         projectRowCards[0].getBoundingClientRect().left;
     return [height_const, width_const];
 }
 
 let [height_const, width_const] = extract_vertical_horizontal_const();
+console.log(height_const)
 let default_height_index = 0;
 let default_width_index = 0;
 const scaleContent = 1;
@@ -100,23 +104,24 @@ const nav_project_horiz = (x_dir) => {
 }
 
 const nav_project_top = () => {
-    default_height_index += 1
-    let default_width = default_width_index*width_const;
-    let default_height = default_height_index*height_const/3*scaleContent;
-    let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.cssText = `
-        --translateX: ${default_width}px; 
-        --translateY: ${default_height}px;`
+    const i = 1;
+    const y_dir = -1;
+    let card_rows = Array.from(document.querySelectorAll('.project-row'));
+    let firstrow = card_rows.shift();
+    firstrow.classList.add("first-row-card-motion");
+    firstrow.addEventListener("animationend", () => {
+        firstrow.style.cssText = 
+            '--opacity: 0; --translateX: 5vw;';
+        card_rows.forEach((row, idx) => {
+            row.style.cssText = `
+                --first-translate-y: ${y_dir*height_const}px;
+            `
+            row.classList.add("first-row-card-motion2");
+        })
+    }, {once: true})
 }
 
 const nav_project_bot = () => {
-    default_height_index -= 1
-    let default_width = default_width_index*width_const;
-    let default_height = default_height_index*height_const/3*scaleContent;
-    let projectCards_ = document.querySelector(".project-cards");
-    projectCards_.style.cssText = `
-        --translateX: ${default_width}px; 
-        --translateY: ${default_height}px;`
 }
 
 window.addEventListener("resize", () => {

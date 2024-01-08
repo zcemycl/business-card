@@ -518,6 +518,10 @@ a.neon {
 }
 
 .project-row {
+    --opacity: 1;
+    --translateX: 0;
+    --translateY: 0;
+    --first-translate-y: 5vh;
     height: calc(var(--content-height)/3);
     display: flex;
     column-gap: var(--project-card-column-gap);
@@ -525,6 +529,9 @@ a.neon {
     align-items: center;
     flex-wrap: nowrap;
     padding: 1% 0;
+    opacity: var(--opacity);
+    transform: 
+        translate3d(var(--translateX), var(--translateY), 0);
 }
 
 .project-row:nth-child(1) .project-card-mlops .project-card-content {
@@ -687,6 +694,7 @@ a.neon {
         rotate3d(var(--rotateX), var(--rotateY), 0, 20deg);
 }
 
+/* column card animation */
 .last-card-motion {
     animation: last-card-keyframes 250ms ease;
 }
@@ -778,6 +786,30 @@ a.neon {
         transform: 
             perspective(500px)
             rotate3d(var(--rotateX), var(--cur_rotateY), 0, 20deg);
+    }
+}
+
+/* row card animation */
+.first-row-card-motion {
+    animation: first-row-card-keyframes 250ms ease;
+}
+
+@keyframes first-row-card-keyframes {
+    to {
+        opacity: 0;
+        transform: 
+            translateX(-5vw);
+    }
+}
+
+.first-row-card-motion2 {
+    animation: first-row-card-keyframes2 250ms ease;
+}
+
+@keyframes first-row-card-keyframes2 {
+    to {
+        transform: 
+            translateY(var(--first-translate-y));
     }
 }
 
