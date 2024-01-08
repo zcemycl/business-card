@@ -21,86 +21,15 @@ let default_width_index = 0;
 const scaleContent = 1;
 const center_y = 1;
 const center_x = 3;
-const rotate_y_const = 10;
-const rotate_x_const = 10;
 
-const nav_project_left = () => {
-    const x_dir = -1;
+const nav_project_horiz = (x_dir) => {
+    let y_rotate, idx_change;
+    idx_change = x_dir===1?0:6;
     for (let i=1; i<4; i++) {
         let copies = []
         let cards = Array.from(document.querySelectorAll(
             `.project-row:nth-child(${i}) .project-card`));
-        let lastcard = cards.shift()
-        lastcard.classList.add("last-card-motion");
-        lastcard.children[0].classList.add("last-card-content-motion");
-        lastcard.addEventListener("animationend", () => {
-            lastcard.style.cssText = 
-                '--opacity: 0; --translateY: 5vh;';
-            lastcard.children[0].style.cssText = 
-                '--rotateX: 0; --rotateY: 0;';
-            cards.forEach((card, idx) => {
-                card.style.cssText = `
-                    --second-translate-x: ${-width_const}px;
-                `
-                card.children[0].style.cssText = `
-                    --rotateX: ${i-center_y-1};
-                    --cur_rotateY: ${-(idx-center_x)};
-                `
-                card.classList.add("rest-card-motion");
-                card.children[0].classList.add("rest-card-content-motion");
-            })
-        }, {once: true})
-
-        cards[1].addEventListener("animationend", () => {
-            cards.forEach((card, idx) => {
-                card.style.cssText = `
-                    --translateX: ${-width_const}px;
-                `
-                card.children[0].style.cssText = `
-                    --rotateX: ${i-center_y-1};
-                    --rotateY: ${-(idx-center_x)};
-                `
-                card.classList.remove("rest-card-motion");
-                card.children[0].classList.remove("rest-card-content-motion");
-            })
-            lastcard.children[0].classList.remove("last-card-content-motion");
-            lastcard.classList.remove("last-card-motion");
-            cards.push(lastcard)
-
-            cards.forEach((card, idx) => {
-                let copy = card.cloneNode(true)
-                copy.style.cssText = ""
-                copy.children[0].style.cssText = ""
-                if (idx===6) {
-                    copy.children[0].style.cssText = `
-                        --rotateX: ${i-center_y-1};
-                        --rotateY: ${-(idx-center_x)};
-                    `
-                    copy.classList.add("last-card-motion2")
-                    copy.children[0].classList.add("last-card-content-motion2")
-                }
-                copies.push(copy)
-            })
-            const content = document.querySelector(`.project-row:nth-child(${i})`);
-            content.replaceChildren(...copies);
-
-            copies[6].addEventListener("animationend", () => {
-                copies[6].classList.remove("last-card-motion2");
-                copies[6].children[0].classList.remove("last-card-content-motion2");
-                copies[6].style.cssText = "";
-                copies[6].children[0].style.cssText = "";
-            }, {once: true})
-        }, {once: true})
-    }
-}
-
-const nav_project_right = () => {
-    const x_dir = 1;
-    for (let i=1; i<4; i++) {
-        let copies = []
-        let cards = Array.from(document.querySelectorAll(
-            `.project-row:nth-child(${i}) .project-card`));
-        let lastcard = cards.pop()
+        let lastcard = x_dir===1?cards.pop():cards.shift()
         lastcard.classList.add("last-card-motion");
         lastcard.children[0].classList.add("last-card-content-motion");
         lastcard.addEventListener("animationend", () => {
@@ -109,12 +38,14 @@ const nav_project_right = () => {
             lastcard.children[0].style.cssText = 
                 '--rotateX: 0; --rotateY: 0;';
             cards.forEach((card, idx) => {
+                y_rotate = -(idx-center_x);
+                if (x_dir === 1) y_rotate -= x_dir;
                 card.style.cssText = `
-                    --second-translate-x: ${width_const}px;
+                    --second-translate-x: ${x_dir*width_const}px;
                 `
                 card.children[0].style.cssText = `
                     --rotateX: ${i-center_y-1};
-                    --cur_rotateY: ${-(idx-center_x+x_dir)};
+                    --cur_rotateY: ${y_rotate};
                 `
                 card.classList.add("rest-card-motion");
                 card.children[0].classList.add("rest-card-content-motion");
@@ -123,28 +54,32 @@ const nav_project_right = () => {
 
         cards[1].addEventListener("animationend", () => {
             cards.forEach((card, idx) => {
+                y_rotate = -(idx-center_x);
+                if (x_dir === 1) y_rotate -= x_dir;
                 card.style.cssText = `
-                    --translateX: ${width_const}px;
+                    --translateX: ${x_dir*width_const}px;
                 `
                 card.children[0].style.cssText = `
                     --rotateX: ${i-center_y-1};
-                    --rotateY: ${-(idx-center_x+x_dir)};
+                    --rotateY: ${y_rotate};
                 `
                 card.classList.remove("rest-card-motion");
                 card.children[0].classList.remove("rest-card-content-motion");
             })
             lastcard.children[0].classList.remove("last-card-content-motion");
             lastcard.classList.remove("last-card-motion");
-            cards.unshift(lastcard)
+            x_dir===1?cards.unshift(lastcard):cards.push(lastcard);
 
             cards.forEach((card, idx) => {
+                y_rotate = -(idx-center_x);
+                if (x_dir === 1) y_rotate -= x_dir;
                 let copy = card.cloneNode(true)
                 copy.style.cssText = ""
                 copy.children[0].style.cssText = ""
-                if (idx===0) {
+                if (idx===idx_change) {
                     copy.children[0].style.cssText = `
                         --rotateX: ${i-center_y-1};
-                        --rotateY: ${-(idx-center_x)};
+                        --rotateY: ${y_rotate};
                     `
                     copy.classList.add("last-card-motion2")
                     copy.children[0].classList.add("last-card-content-motion2")
@@ -154,11 +89,11 @@ const nav_project_right = () => {
             const content = document.querySelector(`.project-row:nth-child(${i})`);
             content.replaceChildren(...copies);
 
-            copies[0].addEventListener("animationend", () => {
-                copies[0].classList.remove("last-card-motion2");
-                copies[0].children[0].classList.remove("last-card-content-motion2");
-                copies[0].style.cssText = "";
-                copies[0].children[0].style.cssText = "";
+            copies[idx_change].addEventListener("animationend", () => {
+                copies[idx_change].classList.remove("last-card-motion2");
+                copies[idx_change].children[0].classList.remove("last-card-content-motion2");
+                copies[idx_change].style.cssText = "";
+                copies[idx_change].children[0].style.cssText = "";
             }, {once: true})
         }, {once: true})
     }
