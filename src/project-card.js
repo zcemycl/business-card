@@ -21,7 +21,7 @@ const extract_vertical_horizontal_const = () => {
 let [height_const, width_const] = extract_vertical_horizontal_const();
 let default_height_index = 0;
 let default_width_index = 0;
-const scaleContent = 1;
+const scaleContent = 1.3;
 const center_y = 1;
 const center_x = 3;
 
@@ -44,7 +44,7 @@ const nav_project_horiz = (x_dir) => {
                 y_rotate = -(idx-center_x);
                 if (x_dir === 1) y_rotate -= x_dir;
                 card.style.cssText = `
-                    --second-translate-x: ${x_dir*width_const}px;
+                    --second-translate-x: ${x_dir*width_const/scaleContent}px;
                 `
                 card.children[0].style.cssText = `
                     --rotateX: ${i-center_y-1};
@@ -60,7 +60,7 @@ const nav_project_horiz = (x_dir) => {
                 y_rotate = -(idx-center_x);
                 if (x_dir === 1) y_rotate -= x_dir;
                 card.style.cssText = `
-                    --translateX: ${x_dir*width_const}px;
+                    --translateX: ${x_dir*width_const/scaleContent}px;
                 `
                 card.children[0].style.cssText = `
                     --rotateX: ${i-center_y-1};
@@ -116,7 +116,7 @@ const nav_project_vert = (y_dir) => {
             x_rotate = idx-center_y
             if (y_dir === 1) x_rotate += y_dir
             row.style.cssText = `
-                --first-translate-y: ${y_dir*height_const}px;
+                --first-translate-y: ${y_dir*height_const/scaleContent}px;
             `
             Array.from(row.children).forEach((card, idx2) => {
                 card.children[0].style.cssText = `
@@ -135,7 +135,7 @@ const nav_project_vert = (y_dir) => {
             x_rotate = idx-center_y
             if (y_dir === 1) x_rotate += y_dir
             row.style.cssText = `
-                --translateY: ${y_dir*height_const}px;
+                --translateY: ${y_dir*height_const/scaleContent}px;
             `
             Array.from(row.children).forEach((card, idx2) => {
                 card.children[0].style.cssText = `
