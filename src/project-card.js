@@ -19,7 +19,6 @@ const extract_vertical_horizontal_const = () => {
 }
 
 let [height_const, width_const] = extract_vertical_horizontal_const();
-console.log(height_const)
 let default_height_index = 0;
 let default_width_index = 0;
 const scaleContent = 1;
@@ -103,25 +102,87 @@ const nav_project_horiz = (x_dir) => {
     }
 }
 
-const nav_project_top = () => {
-    const i = 1;
-    const y_dir = -1;
+const nav_project_vert = (y_dir) => {
+    let x_rotate;
+    let idx_change = y_dir===1?0:2;
+    let copies = [];
     let card_rows = Array.from(document.querySelectorAll('.project-row'));
-    let firstrow = card_rows.shift();
+    let firstrow = y_dir===1?card_rows.pop():card_rows.shift();
     firstrow.classList.add("first-row-card-motion");
     firstrow.addEventListener("animationend", () => {
         firstrow.style.cssText = 
             '--opacity: 0; --translateX: 5vw;';
         card_rows.forEach((row, idx) => {
+            x_rotate = idx-center_y
+            if (y_dir === 1) x_rotate += y_dir
             row.style.cssText = `
                 --first-translate-y: ${y_dir*height_const}px;
             `
+            Array.from(row.children).forEach((card, idx2) => {
+                card.children[0].style.cssText = `
+                    --cur_rotateX: ${x_rotate};
+                    --rotateY: ${-(idx2-center_x)};
+                `
+                card.children[0].classList.add(
+                    "first-row-card-content-motion2");
+            })
             row.classList.add("first-row-card-motion2");
         })
     }, {once: true})
-}
 
-const nav_project_bot = () => {
+    card_rows[0].addEventListener("animationend", () => {
+        card_rows.forEach((row, idx) => {
+            x_rotate = idx-center_y
+            if (y_dir === 1) x_rotate += y_dir
+            row.style.cssText = `
+                --translateY: ${y_dir*height_const}px;
+            `
+            Array.from(row.children).forEach((card, idx2) => {
+                card.children[0].style.cssText = `
+                    --rotateX: ${x_rotate};
+                    --rotateY: ${-(idx2-center_x)};
+                `
+                card.children[0].classList.remove(
+                    "first-row-card-content-motion2");
+            })
+            row.classList.remove("first-row-card-motion2");
+        })
+        firstrow.classList.remove("first-row-card-motion");
+        y_dir===1?card_rows.unshift(firstrow):card_rows.push(firstrow);
+
+        card_rows.forEach((row, idx) => {
+            x_rotate = idx-center_y;
+            let copy = row.cloneNode(true);
+            copy.style.cssText = ""
+            Array.from(copy.children).forEach((card, idx2) => {
+                card.children[0].style.cssText = ""
+                if (idx===idx_change) {
+                    card.children[0].style.cssText = `
+                        --rotateX: ${x_rotate};
+                        --rotateY: ${-(idx2-center_x)};
+                    `
+                    card.children[0].classList.add(
+                        "first-row-card-content-motion3");
+                }
+            })
+            if (idx===idx_change){
+                copy.classList.add("first-row-card-motion3");
+            }
+            copies.push(copy)
+        })
+        const content = document.querySelector(".project-cards");
+        content.replaceChildren(...copies);
+
+        copies[idx_change].addEventListener("animationend", () => {
+            copies[idx_change].classList.remove("first-row-card-motion3");
+            Array.from(copies[idx_change].children).forEach((card, idx) => {
+                card.children[0].classList.remove(
+                    "first-row-card-content-motion3");
+                card.children[0].style.cssText = "";
+            })
+            copies[idx_change].style.cssText = ""
+        }, {once: true})
+    }, {once: true})
 }
 
 window.addEventListener("resize", () => {
