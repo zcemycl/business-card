@@ -670,14 +670,6 @@ a.neon {
     padding: 1% 0;
 }
 
-.project-card {
-    vertical-align: center; 
-    display: inline-block;
-    align-items: center;
-    height: 100%;
-    aspect-ratio: 5/7;
-}
-
 .project-row:nth-child(1) .project-card-mlops .project-card-content {
     --img-source: url("https://raw.githubusercontent.com/zcemycl/systemDeploy/main/docs/resources/mlops_devops.png");
     --img-size: 200%;
@@ -764,52 +756,65 @@ a.neon {
 }
 
 .project-row:nth-child(1) .project-card .project-card-content {
-    --rotateX: calc(-1*var(--rotateX-const));
+    --rotateX: -1;
 }
 
 .project-row:nth-child(2) .project-card .project-card-content {
-    --rotateX: calc(0*var(--rotateX-const));
+    --rotateX: 0;
 }
 
 .project-row:nth-child(3) .project-card .project-card-content {
-    --rotateX: calc(1*var(--rotateX-const));
+    --rotateX: 1;
 }
 
 .project-row .project-card:nth-child(1) .project-card-content {
-    --rotateY: calc(3*var(--rotateY-const));
+    --rotateY: 3;
 }
 
 .project-row .project-card:nth-child(2) .project-card-content {
-    --rotateY: calc(2*var(--rotateY-const));
+    --rotateY: 2;
 }
 
 .project-row .project-card:nth-child(3) .project-card-content {
-    --rotateY: calc(1*var(--rotateY-const));
+    --rotateY: 1;
 }
 
 .project-row .project-card:nth-child(4) .project-card-content {
-    --rotateY: calc(0*var(--rotateY-const));
+    --rotateY: 0;
 }
 
 .project-row .project-card:nth-child(5) .project-card-content {
-    --rotateY: calc(-1*var(--rotateY-const));
+    --rotateY: -1;
 }
 
 .project-row .project-card:nth-child(6) .project-card-content {
-    --rotateY: calc(-2*var(--rotateY-const));
+    --rotateY: -2;
 }
 
 .project-row .project-card:nth-child(7) .project-card-content {
-    --rotateY: calc(-3*var(--rotateY-const));
+    --rotateY: -3;
 }
 
-
-.project-card-content {
+.project-card {
     --opacity: 1;
-    --translateX: 0;
-    --translateY: 0;
+    --translateX: 0px;
+    --translateY: 0px;
     --first-translate-y: 5vh;
     --second-translate-x: 200px;
+    vertical-align: center; 
+    display: inline-block;
+    align-items: center;
+    height: 100%;
+    aspect-ratio: 5/7;
+    opacity: var(--opacity);
+    transform: 
+        translate3d(var(--translateX), var(--translateY), 0);
+        
+}
+
+.project-card-content {
+    --rotateX: 0;
+    --rotateY: 0;
     height: 100%;
     background-image: var(--img-source);
     background-repeat: no-repeat;
@@ -820,14 +825,9 @@ a.neon {
     border-radius: 2%;
     background-color: black;
     border: 1px solid white;
-    opacity: var(--opacity);
-    transform: 
+    transform:
         perspective(500px)
-        translateX(var(--translateX))
-        translateY(var(--translateY))
-        rotateX(var(--rotateX))
-        rotateY(var(--rotateY))
-    ;
+        rotate3d(var(--rotateX), var(--rotateY), 0, 20deg);
 }
 
 .last-card-motion {
@@ -852,43 +852,65 @@ a.neon {
     from {
         opacity: 0;
         transform: 
-            perspective(500px)
-            translateX(0)
             translateY(5vh);
     }
 
     to {
         opacity: 1;
         transform: 
+            translateY(0);
+    }
+}
+
+.last-card-content-motion2 {
+    animation: last-card-content-keyframes2 250ms ease;
+}
+
+@keyframes last-card-content-keyframes2{
+    from {
+        transform: 
             perspective(500px)
-            translateX(0)
-            translateY(0)
-            rotateX(var(--rotateX))
-            rotateY(var(--rotateY))
-        ;
+            rotate3d(0, 0, 0, 20deg);;
+    }
+
+    to {
+        transform: 
+            perspective(500px)
+            rotate3d(var(--rotateX), var(--rotateY), 0, 20deg);
     }
 }
 
 .rest-card-motion {
-    animation: rest-card-keyframes 2000ms ease;
+    animation: rest-card-keyframes 250ms ease;
 }
 
 @keyframes rest-card-keyframes {
-    /* from {
+    from {
+        transform: 
+            translateX(0);
+        ;
+    }
+    to {
+        transform: 
+            translateX(var(--second-translate-x));
+    }
+}
+
+.rest-card-content-motion {
+    animation: rest-card-content-keyframes 250ms ease;
+}
+
+@keyframes rest-card-content-keyframes {
+    from {
         transform: 
             perspective(500px)
-            translateX(0)
-            rotateX(var(--rotateX))   
-            rotateY(var(--prev_rotateY))
+            rotate3d(var(--rotateX), var(--rotateY), 0, 20deg);
         ;
-    } */
+    }
     to {
         transform: 
             perspective(500px)
-            translateX(var(--second-translate-x))
-            rotateX(var(--rotateX))
-            rotateY(var(--rotateY))
-        ;
+            rotate3d(var(--rotateX), var(--cur_rotateY), 0, 20deg);
     }
 }
 
