@@ -1,7 +1,6 @@
 const cards_ = Array.from(document.querySelectorAll(".card-content"));
 const space_cards = cards_[1].getBoundingClientRect().left -
     cards_[0].getBoundingClientRect().left;
-let parser = new DOMParser();
 const center_x = 1;
 const rotate_y_const = 15;
 const rotate_x_const = 15;

@@ -52,11 +52,6 @@ const detect_default_resume_indicator_dot = () => {
 }
 
 const detect_default_navbar_state = () => {
-    // const cur_state = document.querySelector(".active");
-    // const all_states = document.querySelectorAll(".menu > ul > li > a");
-    // console.log(cur_state.hash)
-    // console.log(all_states);
-
     const content_block = document.querySelector(".content");
     content_block.scrollTo(0, content_block.clientHeight);
 }
@@ -64,4 +59,14 @@ const detect_default_navbar_state = () => {
 window.addEventListener("load", () => {
     detect_default_resume_indicator_dot();
     detect_default_navbar_state();
+
+    const projectCards = document.querySelector(".project-cards");
+    const middleCard = document.querySelector(".project-card:nth-child(4)");
+    const {width: widtho, left: lefto} = projectCards.getBoundingClientRect(); 
+    const {width, left} = middleCard.getBoundingClientRect();
+
+    projectCards.style.cssText = `
+        --translateX: ${lefto+widtho/2-left-width/2}px;
+    `
+
 })
