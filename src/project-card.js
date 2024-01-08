@@ -24,10 +24,6 @@ const center_x = 3;
 const rotate_y_const = 10;
 const rotate_x_const = 10;
 
-function sleep (time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-}
-
 const nav_project_left = () => {
     default_width_index += 1;
     let default_width = default_width_index*width_const;
@@ -40,65 +36,68 @@ const nav_project_left = () => {
 }
 
 const nav_project_right = () => {
-    let copies = []
-    let cards = Array.from(document.querySelectorAll(
-        ".project-row:nth-child(1) .project-card"));
-    let lastcard = cards.pop()
-    lastcard.classList.add("last-card-motion");
-    lastcard.addEventListener("animationend", () => {
-        lastcard.style.cssText = 
-            '--opacity: 0; --translateY: 5vh';
-        cards.forEach((card, idx) => {
-            card.style.cssText = `
-                --second-translate-x: ${width_const}px;
-            `
-            card.children[0].style.cssText = `
-                --rotateX: ${-1};
-                --cur_rotateY: ${-1*(idx-center_x+1)};
-            `
-            card.classList.add("rest-card-motion");
-            card.children[0].classList.add("rest-card-content-motion");
-        })
-    }, {once: true})
-
-    cards[1].addEventListener("animationend", () => {
-        cards.forEach((card, idx) => {
-            card.style.cssText = `
-                --translateX: ${width_const}px;
-            `
-            card.children[0].style.cssText = `
-                --rotateX: ${-1};
-                --rotateY: ${-(idx-center_x+1)};
-            `
-            card.classList.remove("rest-card-motion");
-            card.children[0].classList.remove("rest-card-content-motion");
-        })
-        lastcard.classList.remove("last-card-motion");
-        cards.unshift(lastcard)
-
-        cards.forEach((card, idx) => {
-            let copy = card.cloneNode(true)
-            copy.style.cssText = ""
-            copy.children[0].style.cssText = ""
-            if (idx===0) {
-                copy.children[0].style.cssText = `
-                    --rotateX: ${-1};
-                    --rotateY: ${-(idx-center_x)};
+    const x_dir = 1;
+    for (let i=1; i<4; i++) {
+        let copies = []
+        let cards = Array.from(document.querySelectorAll(
+            `.project-row:nth-child(${i}) .project-card`));
+        let lastcard = cards.pop()
+        lastcard.classList.add("last-card-motion");
+        lastcard.addEventListener("animationend", () => {
+            lastcard.style.cssText = 
+                '--opacity: 0; --translateY: 5vh';
+            cards.forEach((card, idx) => {
+                card.style.cssText = `
+                    --second-translate-x: ${width_const}px;
                 `
-                copy.classList.add("last-card-motion2")
-                copy.children[0].classList.add("last-card-content-motion2")
-            }
-            copies.push(copy)
-        })
-        const content = document.querySelector('.project-row:nth-child(1)');
-        content.replaceChildren(...copies);
-
-        copies[0].addEventListener("animationend", () => {
-            copies[0].classList.remove("last-card-motion2");
-            copies[0].children[0].classList.remove("last-card-content-motion2");
-            copies[0].children[0].style.cssText = "";
+                card.children[0].style.cssText = `
+                    --rotateX: ${i-center_y-1};
+                    --cur_rotateY: ${-(idx-center_x+x_dir)};
+                `
+                card.classList.add("rest-card-motion");
+                card.children[0].classList.add("rest-card-content-motion");
+            })
         }, {once: true})
-    }, {once: true})
+
+        cards[1].addEventListener("animationend", () => {
+            cards.forEach((card, idx) => {
+                card.style.cssText = `
+                    --translateX: ${width_const}px;
+                `
+                card.children[0].style.cssText = `
+                    --rotateX: ${i-center_y-1};
+                    --rotateY: ${-(idx-center_x+x_dir)};
+                `
+                card.classList.remove("rest-card-motion");
+                card.children[0].classList.remove("rest-card-content-motion");
+            })
+            lastcard.classList.remove("last-card-motion");
+            cards.unshift(lastcard)
+
+            cards.forEach((card, idx) => {
+                let copy = card.cloneNode(true)
+                copy.style.cssText = ""
+                copy.children[0].style.cssText = ""
+                if (idx===0) {
+                    copy.children[0].style.cssText = `
+                        --rotateX: ${i-center_y-1};
+                        --rotateY: ${-(idx-center_x)};
+                    `
+                    copy.classList.add("last-card-motion2")
+                    copy.children[0].classList.add("last-card-content-motion2")
+                }
+                copies.push(copy)
+            })
+            const content = document.querySelector(`.project-row:nth-child(${i})`);
+            content.replaceChildren(...copies);
+
+            copies[0].addEventListener("animationend", () => {
+                copies[0].classList.remove("last-card-motion2");
+                copies[0].children[0].classList.remove("last-card-content-motion2");
+                copies[0].children[0].style.cssText = "";
+            }, {once: true})
+        }, {once: true})
+    }
 }
 
 const nav_project_top = () => {
