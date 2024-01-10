@@ -35,8 +35,8 @@
     --rotateY-const: 10deg;
     --bg-color: rgb(15, 70, 83);
     --img-pos: center;
-    --card-brightness-const-x: 0.3;
-    --card-brightness-const-y: 0.3;
+    --card-brightness-const-x: 100%;
+    --card-brightness-const-y: 100%;
     --project-card-column-gap: 1%;
     --project-card-translate-x: calc( -1 * (5 * 7 * (80vh - 6%) / 3 / 7 + 6%) / 2 + 50%);
 }
@@ -620,42 +620,52 @@ a.neon {
 
 .project-row:nth-child(1) .project-card .project-card-content {
     --rotateX: -1;
+    --brightnessY: calc(.8*var(--card-brightness-const-y));
 }
 
 .project-row:nth-child(2) .project-card .project-card-content {
     --rotateX: 0;
+    --brightnessY: calc(1*var(--card-brightness-const-y));
 }
 
 .project-row:nth-child(3) .project-card .project-card-content {
     --rotateX: 1;
+    --brightnessY: calc(.8*var(--card-brightness-const-y));
 }
 
 .project-row .project-card:nth-child(1) .project-card-content {
     --rotateY: 3;
+    --brightnessX: calc(.5*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(2) .project-card-content {
     --rotateY: 2;
+    --brightnessX: calc(.7*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(3) .project-card-content {
     --rotateY: 1;
+    --brightnessX: calc(.9*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(4) .project-card-content {
     --rotateY: 0;
+    --brightnessX: calc(1*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(5) .project-card-content {
     --rotateY: -1;
+    --brightnessX: calc(.9*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(6) .project-card-content {
     --rotateY: -2;
+    --brightnessX: calc(.7*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(7) .project-card-content {
     --rotateY: -3;
+    --brightnessX: calc(.5*var(--card-brightness-const-x));
 }
 
 .project-card {
@@ -672,7 +682,6 @@ a.neon {
     opacity: var(--opacity);
     transform: 
         translate3d(var(--translateX), var(--translateY), 0);
-        
 }
 
 .project-card-content {
@@ -691,6 +700,9 @@ a.neon {
     transform:
         perspective(500px)
         rotate3d(var(--rotateX), var(--rotateY), 0, 20deg);
+    /* filter: 
+        brightness(var(--brightnessY))
+        brightness(var(--brightnessX)); */
 }
 
 /* column card animation */
