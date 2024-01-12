@@ -37,7 +37,7 @@
     --img-pos: center;
     --card-brightness-const-x: 100%;
     --card-brightness-const-y: 100%;
-    --project-card-zoom: 1;
+    --project-card-zoom: 1.3;
     --project-card-center-zoom: 1.3;
     --project-card-column-gap: 1%;
     --project-card-translate-x: calc( -1 * (5 * 7 * (80vh - 6%) / 3 / 7 + 6%) / 2 + 50%);
