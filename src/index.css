@@ -35,8 +35,8 @@
     --rotateY-const: 10deg;
     --bg-color: rgb(15, 70, 83);
     --img-pos: center;
-    --card-brightness-const-x: 0.3;
-    --card-brightness-const-y: 0.3;
+    --card-brightness-const-x: 100%;
+    --card-brightness-const-y: 100%;
     --project-card-column-gap: 1%;
     --project-card-translate-x: calc( -1 * (5 * 7 * (80vh - 6%) / 3 / 7 + 6%) / 2 + 50%);
 }
@@ -498,6 +498,18 @@ a.neon {
     grid-template-rows: repeat(4, 1fr);
 }
 
+.project-mask-vertical {
+    grid-column: 1 / 5;
+    grid-row: 1 / 5;
+    -webkit-mask: 
+        linear-gradient(transparent 1%, black, transparent 99%);
+}
+
+.project-mask-horizontal {
+    -webkit-mask: 
+        linear-gradient(to right, transparent 2%, black, transparent 98%);
+}
+
 .project-cards {
     --translateX: 0;
     --translateY: 0;
@@ -508,8 +520,6 @@ a.neon {
     max-height: var(--content-height);
     max-height: var(--content-height-phone);
     justify-content: space-between;
-    grid-column: 1 / 5;
-    grid-row: 1 / 5;
     transform: 
         translate3d(var(--translateX), var(--translateY), 0) 
         scale(1.3)
@@ -529,6 +539,8 @@ a.neon {
     flex-wrap: nowrap;
     padding: 1% 0;
     opacity: var(--opacity);
+    z-index: 1;
+    transition: transform 200ms, z-index 200ms;
     transform: 
         translate3d(var(--translateX), var(--translateY), 0);
 }
@@ -620,42 +632,52 @@ a.neon {
 
 .project-row:nth-child(1) .project-card .project-card-content {
     --rotateX: -1;
+    --brightnessY: calc(.8*var(--card-brightness-const-y));
 }
 
 .project-row:nth-child(2) .project-card .project-card-content {
     --rotateX: 0;
+    --brightnessY: calc(1*var(--card-brightness-const-y));
 }
 
 .project-row:nth-child(3) .project-card .project-card-content {
     --rotateX: 1;
+    --brightnessY: calc(.8*var(--card-brightness-const-y));
 }
 
 .project-row .project-card:nth-child(1) .project-card-content {
     --rotateY: 3;
+    --brightnessX: calc(.5*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(2) .project-card-content {
     --rotateY: 2;
+    --brightnessX: calc(.7*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(3) .project-card-content {
     --rotateY: 1;
+    --brightnessX: calc(.9*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(4) .project-card-content {
     --rotateY: 0;
+    --brightnessX: calc(1*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(5) .project-card-content {
     --rotateY: -1;
+    --brightnessX: calc(.9*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(6) .project-card-content {
     --rotateY: -2;
+    --brightnessX: calc(.7*var(--card-brightness-const-x));
 }
 
 .project-row .project-card:nth-child(7) .project-card-content {
     --rotateY: -3;
+    --brightnessX: calc(.5*var(--card-brightness-const-x));
 }
 
 .project-card {
@@ -667,12 +689,13 @@ a.neon {
     vertical-align: center; 
     display: inline-block;
     align-items: center;
+    z-index: 1;
     height: 100%;
     aspect-ratio: 5/7;
     opacity: var(--opacity);
+    transition: transform 200ms, z-index 200ms;
     transform: 
         translate3d(var(--translateX), var(--translateY), 0);
-        
 }
 
 .project-card-content {
@@ -691,6 +714,15 @@ a.neon {
     transform:
         perspective(500px)
         rotate3d(var(--rotateX), var(--rotateY), 0, 20deg);
+}
+
+.project-row:hover {
+    z-index: 10;
+}
+
+.project-card:hover {
+    transform: scale(1.3);
+    z-index: 10;
 }
 
 /* column card animation */

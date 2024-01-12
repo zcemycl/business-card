@@ -1,13 +1,28 @@
 # Business Card
-This repo is to improve [zcemycl/practice-app](https://github.com/zcemycl/practice-app) with good practices learnt from [zcemycl/webpack-react-ts-mpa-example](https://github.com/zcemycl/webpack-react-ts-mpa-example) and others to develop more functional webpages.
+## Background
+This series of repositories with prefix `business-card` should serve as my portfolio to demonstrate my skills and interesting ideas. It should extend the content of repositories like `zcemycl.github.io`, `practice-app` and `webpack-ts-mpa-example`, etc. 
 
-## Relevant Repos
+## Separation of concerns
 - Frontend
-    - [zcemycl/business-card](https://github.com/zcemycl/business-card)
+    - business-card
+    - business-card-private
+    - business-card-prototype
+    - business-card-react
+    - business-card-next
+    - business-card-{framework}
+    - business-card-uiux-design
 - Backend
-    - Coming Soon?
+    - business-card-backend
+    - business-card-home-backend
 - Infrastructure
-    - Coming Soon?
+    - business-card-infra
+    - business-card-home-infra
+- Database
+    - business-card-core
+    - business-card-etl
+- Others
+    - business-card-{npm-package}
+    - business-card-{pypi-package}
 
 ## Coding Standards
 - Frontend
