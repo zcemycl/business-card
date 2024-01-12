@@ -21,7 +21,7 @@ const extract_vertical_horizontal_const = () => {
 let [height_const, width_const] = extract_vertical_horizontal_const();
 let default_height_index = 0;
 let default_width_index = 0;
-const scaleContent = 1.3;
+const scaleContent = 1;
 const center_y = 1;
 const center_x = 3;
 
