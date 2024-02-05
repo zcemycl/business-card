@@ -53,12 +53,13 @@ const detect_default_resume_indicator_dot = () => {
 
 const detect_default_navbar_state = () => {
     const content_block = document.querySelector(".content");
-    content_block.scrollTo(0, content_block.clientHeight);
+    const page = 2;
+    content_block.scrollTo(0, page*content_block.clientHeight);
 }
 
 window.addEventListener("load", () => {
     detect_default_resume_indicator_dot();
-    // detect_default_navbar_state();
+    detect_default_navbar_state();
 
     const projectCards = document.querySelector(".project-cards");
     const middleCard = document.querySelector(".project-card:nth-child(4)");

@@ -926,7 +926,6 @@ a.neon {
         transform: 
             perspective(500px)
             rotate3d(0, 0, 0, 20deg);
-        ;
     }
     to {
         transform: 
