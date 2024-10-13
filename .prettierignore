@@ -1,0 +1,7 @@
+docs
+resources
+node_modules
+.venv
+
+**/*.py
+**/*.tf

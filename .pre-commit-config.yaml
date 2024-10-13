@@ -1,0 +1,94 @@
+exclude: '^(docs|resources)'
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+        exclude_types: [javascript, ts, tsx, jsx]
+      - id: check-added-large-files
+        exclude_types: [javascript, ts, tsx, jsx]
+      - id: check-json
+        exclude_types: [javascript, ts, tsx, jsx]
+      - id: check-merge-conflict
+        exclude_types: [javascript, ts, tsx, jsx]
+      - id: check-xml
+        exclude_types: [javascript, ts, tsx, jsx]
+      - id: check-yaml
+        exclude_types: [javascript, ts, tsx, jsx]
+      - id: debug-statements
+        exclude_types: [javascript, ts, tsx, jsx]
+      - id: end-of-file-fixer
+        exclude_types: [javascript, ts, tsx, jsx]
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args:
+          - --max-line-length=72
+        exclude: alembic/
+        name: flake8 under python3
+        additional_dependencies:
+          - flake8-comprehensions
+          - flake8-mutable
+          - flake8-simplify
+          - flake8-use-fstring
+        language_version: python3
+        types_or: [python]
+        # files: |
+        #   (?x)^(
+        #       bcard-data-discovery/.*py|
+        #       bcard-datacore/.*py
+        #   )$
+
+  - repo: https://github.com/ambv/black
+    rev: 24.4.0
+    hooks:
+      - id: black
+        language: python
+        args: ['--line-length=72']
+        types_or: [python]
+
+  - repo: http://github.com/timothycrosley/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: isort (python)
+        args: ['--profile', 'black', --line-length=72]
+        types_or: [python]
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.83.3
+    hooks:
+      - id: terraform_fmt
+        types_or: [terraform]
+        args:
+          - --args=-recursive
+          - --args=-write=true
+
+  # - repo: https://github.com/prettier/prettier
+  #   rev: 3.3.3
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        language: node
+        args: [--single-quote=true]
+        entry: npx prettier --check . --write
+        types_or: [javascript, ts, tsx, jsx]
+        exclude_types: [python, terraform]
+      - id: eslint
+        name: eslint
+        language: node
+        entry: npx eslint
+        types_or: [javascript, ts, tsx, jsx]
+        exclude_types: [python, terraform]
+
+  # - repo: https://github.com/eslint/eslint
+  #   rev: 8.57.0
+  #   hooks:
+  #     - id: eslint
+  #       language: node
+  #       types_or: [javascript, ts, tsx, jsx]
+  #       exclude_types: [python, terraform]
